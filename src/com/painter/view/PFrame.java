@@ -10,12 +10,14 @@ import com.painter.controller.PCommand;
 import com.painter.controller.PPanel;
 import com.painter.model.Data;
 import com.painter.model.Images;
+import com.painter.model.lang.LanguageFactory;
 
 public class PFrame extends JFrame
 {
 
 	public PFrame()
 	{
+		LanguageFactory.updateLanguages();
 		Data data = new Data();
 		PCommand cmd = new PCommand(data);
 		

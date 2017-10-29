@@ -8,6 +8,9 @@ import javax.swing.JMenuItem;
 
 import com.painter.controller.PCommand;
 import com.painter.model.Data;
+import com.painter.model.lang.DefaultDictionary;
+import com.painter.model.lang.InterfaceLanguage;
+import com.painter.model.lang.LanguageFactory;
 
 public class PMenu extends JMenuBar
 {
@@ -104,19 +107,16 @@ public class PMenu extends JMenuBar
 		
 		JMenu language = new JMenu("actionLanguage");
 		language.setText(data.dictionary.getDictionary().get(language.getActionCommand()));
-
-		JMenuItem english = new JMenuItem("actionEnglish");
-		JMenuItem russian = new JMenuItem("actionRussian");
-		JMenuItem ukrainian = new JMenuItem("actionUkrainian");
+		
+		JMenuItem english = new JMenuItem("English");
+		
 		JMenuItem addLanguage = new JMenuItem("actionAddLanguage");
-		english.setText(data.dictionary.getDictionary().get(english.getActionCommand()));
-		russian.setText(data.dictionary.getDictionary().get(russian.getActionCommand()));
-		ukrainian.setText(data.dictionary.getDictionary().get(ukrainian.getActionCommand()));
 		addLanguage.setText(data.dictionary.getDictionary().get(addLanguage.getActionCommand()));
-
+//		for (InterfaceLanguage lang : LanguageFactory.languages)
+//		{
+//			language.add(new JMenuItem(lang.getName()));
+//		}
 		language.add(english);
-		language.add(russian);
-		language.add(ukrainian);
 		language.addSeparator();
 		language.add(addLanguage);
 		options.add(language);

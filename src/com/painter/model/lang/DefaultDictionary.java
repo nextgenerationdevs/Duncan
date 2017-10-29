@@ -6,7 +6,9 @@ import java.util.Map;
 public class DefaultDictionary implements InterfaceLanguage
 {
 	private static Map<String, String> dictionary;
-
+	private boolean status;
+	private static final String name = "English";
+	
 	@Override
 	public Map<String, String> getDictionary()
 	{
@@ -14,12 +16,11 @@ public class DefaultDictionary implements InterfaceLanguage
 			setDictionary();
 		return dictionary;
 	}
-
+	
 	private void setDictionary()
 	{
 		dictionary = new HashMap<String, String>();
 		
-		//
 		dictionary.put("actionFile", "File");
 		dictionary.put("actionNew", "New");
 		dictionary.put("actionOpen", "Open");
@@ -48,9 +49,6 @@ public class DefaultDictionary implements InterfaceLanguage
 		dictionary.put("actionSkins", "Skins");
 		dictionary.put("actionCloud", "Cloud");
 		dictionary.put("actionLanguage", "Language");
-		dictionary.put("actionEnglish", "English");
-		dictionary.put("actionRussian", "Русский");
-		dictionary.put("actionUkrainian", "Українська");
 		dictionary.put("actionAddLanguage", "Add language");
 			
 		dictionary.put("actionHelp", "Help");
@@ -63,5 +61,23 @@ public class DefaultDictionary implements InterfaceLanguage
 	{
 		dictionary = null;
 		dictionary = map;
+	}
+
+	@Override
+	public boolean getStatus() 
+	{
+		return status;
+	}
+
+	@Override
+	public void setStatus(boolean status) 
+	{
+		this.status = status;
+	}
+
+	@Override
+	public String getName() 
+	{
+		return name;
 	}
 }
