@@ -21,7 +21,7 @@ public class PFrame extends JFrame
 		Data data = new Data();
 		PCommand cmd = new PCommand(data);
 		
-		setTitle("Painter");		
+		setTitle("Duncan");		
 		setIconImage(Images.getIcon());
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
