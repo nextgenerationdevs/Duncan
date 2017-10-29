@@ -108,7 +108,7 @@ public class PMenu extends JMenuBar
 		JMenu language = new JMenu("actionLanguage");
 		language.setText(data.dictionary.getDictionary().get(language.getActionCommand()));
 		
-		JMenuItem english = new JMenuItem("English");
+		JMenuItem english = new JMenuItem("English");				//	’ардкод, посмотреть, как безболезненно выт€нуть из DefaultDictionary
 		
 		JMenuItem addLanguage = new JMenuItem("actionAddLanguage");
 		addLanguage.setText(data.dictionary.getDictionary().get(addLanguage.getActionCommand()));
