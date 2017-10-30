@@ -14,7 +14,6 @@ import com.painter.model.lang.LanguageFactory;
 
 public class PFrame extends JFrame
 {
-
 	public PFrame()
 	{
 		LanguageFactory.updateLanguages();
@@ -32,7 +31,7 @@ public class PFrame extends JFrame
 	
 		add(new PPanel(data), BorderLayout.CENTER);
 		
-		setJMenuBar(new PMenu(data, cmd));
+		setJMenuBar(new PMenu());
 		
 		add(new PToolBar(cmd), BorderLayout.NORTH);
 		

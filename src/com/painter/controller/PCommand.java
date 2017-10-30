@@ -4,8 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import com.painter.model.Data;
-import com.painter.view.PHotKeysPanel;
 import com.painter.view.modal.AboutDialog;
+import com.painter.view.modal.HotKeysDialog;
 import com.painter.view.modal.NewDialog;
 import com.painter.view.modal.PluginsDialog;
 
@@ -121,13 +121,12 @@ public class PCommand
 		}
 	}
 
-	// затычка
 	class ActionHotKeys implements ActionListener 
 	{
 		@Override
 		public void actionPerformed(ActionEvent e) 
 		{
-			new PHotKeysPanel(data);
+			new HotKeysDialog();
 		}
 	}
 
