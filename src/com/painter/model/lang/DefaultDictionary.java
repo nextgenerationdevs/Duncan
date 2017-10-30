@@ -26,7 +26,7 @@ public class DefaultDictionary implements InterfaceLanguage
 		dictionary.put("actionOpen", "Open");
 		dictionary.put("actionOpenFromCloud", "Open from Cloud");
 		dictionary.put("actionLoad", "Load");
-		dictionary.put("actionSave", "New");
+		dictionary.put("actionSave", "Save");
 		dictionary.put("actionSaveToCloud", "Save to Cloud");
 		dictionary.put("actionReload", "Reload");
 		dictionary.put("actionClose", "Close");

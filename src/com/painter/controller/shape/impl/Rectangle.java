@@ -1,14 +1,12 @@
 package com.painter.controller.shape.impl;
 
-import java.awt.Graphics2D;
-
 import com.painter.model.shape.InterfaceShape;
 
 public class Rectangle implements InterfaceShape
 {
 
 	@Override
-	public void drawShape(Graphics2D graphics2d, int startX, int startY, int endX, int endY, int thickness, int color)
+	public void drawShape(int type, int startX, int startY, int endX, int endY, int thickness, int color)
 	{
 		// TODO Auto-generated method stub
 		
