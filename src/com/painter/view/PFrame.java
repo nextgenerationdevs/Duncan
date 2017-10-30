@@ -1,19 +1,24 @@
 package com.painter.view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.awt.event.MouseEvent;
 
 import javax.swing.JFrame;
 
 import com.painter.controller.PCommand;
-import com.painter.controller.PPanel;
 import com.painter.model.Data;
 import com.painter.model.Images;
 import com.painter.model.lang.LanguageFactory;
 
 public class PFrame extends JFrame
 {
+
+	public PTabbedPane tpane;
+	
+
+
 	public PFrame()
 	{
 		LanguageFactory.updateLanguages();
@@ -21,21 +26,25 @@ public class PFrame extends JFrame
 		PCommand cmd = new PCommand(data);
 		
 		setTitle("Duncan");		
-		setIconImage(Images.getIcon());
-		setResizable(false);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+		setIconImage(Images.getIcon());		
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		
 		setSize(1366, 768);
 		setLocation( Toolkit.getDefaultToolkit().getScreenSize().width / 2 - 1366 / 2, 
 					 Toolkit.getDefaultToolkit().getScreenSize().height / 2 - 768 / 2);
-	
-		add(new PPanel(data), BorderLayout.CENTER);
+
+		getContentPane().setBackground(Color.GRAY);
+								
+		setJMenuBar(new PMenu());		
+		add(new PToolBar(cmd), BorderLayout.NORTH);		
+		add(new PStatusBar(), BorderLayout.SOUTH);
 		
 		setJMenuBar(new PMenu());
 		
-		add(new PToolBar(cmd), BorderLayout.NORTH);
+		tpane = new PTabbedPane(cmd);
+		add(tpane, BorderLayout.CENTER);
 		
-		add(new PStatusBar(), BorderLayout.SOUTH);
+		setResizable(true);
+		setMinimumSize(new Dimension(1366, 768));
 		
 		setVisible(true);
 	}
