@@ -38,8 +38,6 @@ public class PFrame extends JFrame
 		add(new PToolBar(cmd), BorderLayout.NORTH);		
 		add(new PStatusBar(), BorderLayout.SOUTH);
 		
-		setJMenuBar(new PMenu());
-		
 		tpane = new PTabbedPane(cmd);
 		add(tpane, BorderLayout.CENTER);
 		
