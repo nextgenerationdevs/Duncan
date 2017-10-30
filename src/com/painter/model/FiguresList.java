@@ -16,4 +16,9 @@ public class FiguresList
 			figures = Collections.synchronizedList(new ArrayList<>());
 		return figures;
 	}
+	
+	public void addFigure(JPanel figure)
+	{
+		
+	}
 }

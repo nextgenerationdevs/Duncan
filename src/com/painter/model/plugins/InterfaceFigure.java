@@ -36,6 +36,10 @@ public interface InterfaceFigure
 	 */
 	public void setMainProperties(int type, int color, int thickness);
 	/**
+	 * @return type, color, thickness фигуры
+	 */
+	public int[] getMainProperties();
+	/**
 	 * @return выбрана текущая фигура
 	 */
 	public boolean isSelected(); 
