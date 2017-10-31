@@ -3,7 +3,6 @@ package com.painter.controller.listeners;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import com.painter.controller.EmptyDialog;
 import com.painter.view.PTabbedPane;
 
 public class ActionNewFile implements ActionListener 
@@ -18,7 +17,6 @@ public class ActionNewFile implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e) 
 	{
-		new EmptyDialog(getClass().getName());
-		tPane.addTab("Untittled");
+		tPane.addTab("Untitled");
 	}
 }
