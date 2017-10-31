@@ -6,7 +6,6 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -15,7 +14,6 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import com.painter.controller.PPanel;
 import com.painter.model.Data;
 
 public class AboutDialog extends JDialog implements ActionListener
@@ -26,7 +24,7 @@ public class AboutDialog extends JDialog implements ActionListener
 	{
 		setTitle("AUTHORS");
 		
-		PPanel pp = new PPanel(data);
+		JPanel pp = new JPanel();
 		int width = 400;
 		int height = 100;	
 		int x = pp.getToolkit().getScreenSize().width / 2 - width / 4;

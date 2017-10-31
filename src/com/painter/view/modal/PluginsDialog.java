@@ -37,15 +37,13 @@ import com.painter.view.modal.plugins_model.PluginsTableModel;
 
 public class PluginsDialog extends JDialog
 {
-	Data data;
 	JTabbedPane jtp = new JTabbedPane();
 	
 	public PluginsDialog(Data data)
 	{
-		this.data = data;
 		setTitle("Plugins Management");
 		
-		PPanel pp = new PPanel(data);
+		JPanel pp = new JPanel();
 		int width = 400;
 		int height = 400;
 		int x = pp.getToolkit().getScreenSize().width / 2 - width / 2;

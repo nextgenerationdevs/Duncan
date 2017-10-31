@@ -9,6 +9,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -20,9 +21,7 @@ import com.painter.view.modal.hot_keys_model.HotKeysImpl;
 import com.painter.view.modal.hot_keys_model.HotKeysTableModel;
 
 public class HotKeysDialog extends JDialog implements ActionListener
-{
-	Data data;
-	
+{	
 	public HotKeysDialog()
 	{
 		setTitle("Hot keys");
@@ -31,7 +30,7 @@ public class HotKeysDialog extends JDialog implements ActionListener
 		JTable mainTable = new JTable(new HotKeysTableModel(hotKeysImpl));   
         mainTable.setRowHeight(20);
 		
-		PPanel pp = new PPanel(data);
+		JPanel pp = new JPanel();
 		int width = mainTable.getColumnModel().getColumnCount() * 175;
 		int height = mainTable.getRowCount() * 20;
 		int x = pp.getToolkit().getScreenSize().width / 2 - width / 2;
