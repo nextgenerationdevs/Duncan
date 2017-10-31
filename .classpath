@@ -1,6 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="resources/lib/beautyeye_lnf.jar"/>
+	<classpathentry kind="lib" path="resources/lib/JTattoo-1.6.11.jar"/>
+	<classpathentry kind="lib" path="resources/lib/substance-swingx.jar"/>
+	<classpathentry kind="lib" path="resources/lib/substance-watermark-pack.jar"/>
+	<classpathentry kind="lib" path="resources/lib/substance.jar"/>
+	<classpathentry kind="lib" path="resources/lib/swingx.jar"/>
+	<classpathentry kind="lib" path="resources/lib/synthetica.jar"/>
+	<classpathentry kind="lib" path="resources/lib/syntheticaBatik.jar"/>
+	<classpathentry kind="lib" path="resources/lib/syntheticaBlackEye.jar"/>
+	<classpathentry kind="lib" path="resources/lib/syntheticaBlackMoon.jar"/>
+	<classpathentry kind="lib" path="resources/lib/syntheticaBlackStar.jar"/>
+	<classpathentry kind="lib" path="resources/lib/syntheticaBlueIce.jar"/>
+	<classpathentry kind="lib" path="resources/lib/syntheticaBlueMoon.jar"/>
+	<classpathentry kind="lib" path="resources/lib/syntheticaBlueSteel.jar"/>
+	<classpathentry kind="lib" path="resources/lib/syntheticaClassy.jar"/>
+	<classpathentry kind="lib" path="resources/lib/syntheticaGreenDream.jar"/>
+	<classpathentry kind="lib" path="resources/lib/syntheticaMauveMetallic.jar"/>
+	<classpathentry kind="lib" path="resources/lib/syntheticaOrangeMetallic.jar"/>
+	<classpathentry kind="lib" path="resources/lib/syntheticaSilverMoon.jar"/>
+	<classpathentry kind="lib" path="resources/lib/syntheticaSimple2D.jar"/>
+	<classpathentry kind="lib" path="resources/lib/syntheticaSkyMetallic.jar"/>
+	<classpathentry kind="lib" path="resources/lib/syntheticaWhiteVision.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

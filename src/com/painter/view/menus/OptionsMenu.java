@@ -39,7 +39,7 @@ public class OptionsMenu extends JMenu
 				   					  item.addActionListener(cmd.actionPlugins); break;
 				case "actionSkins": item.setIcon(new ImageIcon("resources/img/menubar/skins-icon.png"));
 									item.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.ALT_MASK));
-									/*item.addActionListener(cmd.actionPlugins);*/ break;
+									item.addActionListener(cmd.actionSkins); break;
 				case "actionCloud": item.setIcon(new ImageIcon("resources/img/menubar/cloud-icon.png"));
 									item.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, ActionEvent.CTRL_MASK | ActionEvent.SHIFT_MASK));
 									/*item.addActionListener(cmd.actionPlugins);*/ break;

@@ -13,17 +13,20 @@ import com.painter.view.menus.WindowMenu;
 
 public class PMenu extends JMenuBar
 {
-	private Data data;
-	private PCommand cmd = new PCommand(data);
+	private FileMenu 	fileMenu;
+	private EditMenu 	editMenu;
+	private WindowMenu 	windowMenu;
+	private OptionsMenu optionsMenu;
+	private HelpMenu 	helpMenu;
 	
-	private FileMenu 	fileMenu 	= new FileMenu(data, cmd);
-	private EditMenu 	editMenu 	= new EditMenu(data, cmd);
-	private WindowMenu 	windowMenu 	= new WindowMenu(data, cmd);
-	private OptionsMenu optionsMenu = new OptionsMenu(data, cmd);
-	private HelpMenu 	helpMenu 	= new HelpMenu(data, cmd);
-	
-	public PMenu()
+	public PMenu(Data data, PCommand cmd)
 	{
+		fileMenu 	= new FileMenu(data, cmd);
+		editMenu 	= new EditMenu(data, cmd);
+		windowMenu 	= new WindowMenu(data, cmd);
+		optionsMenu = new OptionsMenu(data, cmd);
+		helpMenu 	= new HelpMenu(data, cmd);
+		
 		Object[] obj = {
 					   	fileMenu.createFileMenu(), 
 					   	editMenu.createEditMenu(), 

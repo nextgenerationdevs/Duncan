@@ -23,18 +23,19 @@ public class PFrame extends JFrame
 	{
 		LanguageFactory.updateLanguages();
 		Data data = new Data();
-		PCommand cmd = new PCommand(data);
+		PCommand cmd = new PCommand(data, this);
 		
 		setTitle("Duncan");		
 		setIconImage(Images.getIcon());		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		
 		setSize(1366, 768);
+//		setLocationRelativeTo(null);
 		setLocation( Toolkit.getDefaultToolkit().getScreenSize().width / 2 - 1366 / 2, 
 					 Toolkit.getDefaultToolkit().getScreenSize().height / 2 - 768 / 2);
 
-		getContentPane().setBackground(Color.GRAY);
+//		getContentPane().setBackground(Color.GRAY);
 								
-		setJMenuBar(new PMenu());		
+		setJMenuBar(new PMenu(data, cmd));		
 		add(new PToolBar(cmd), BorderLayout.NORTH);		
 		add(new PStatusBar(), BorderLayout.SOUTH);
 		

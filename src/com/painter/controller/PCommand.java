@@ -1,5 +1,7 @@
 package com.painter.controller;
 
+import java.awt.event.ActionListener;
+
 import com.painter.controller.listeners.ActionAbout;
 import com.painter.controller.listeners.ActionCloseFile;
 import com.painter.controller.listeners.ActionColorChooser;
@@ -13,6 +15,7 @@ import com.painter.controller.listeners.ActionOpenFileFromCloud;
 import com.painter.controller.listeners.ActionPlugins;
 import com.painter.controller.listeners.ActionSaveFile;
 import com.painter.controller.listeners.ActionSaveFileToCloud;
+import com.painter.controller.listeners.ActionSkins;
 import com.painter.controller.listeners.ActionThickness;
 import com.painter.controller.listeners.PaintListener;
 import com.painter.model.Data;
@@ -21,10 +24,43 @@ import com.painter.view.PFrame;
 public class PCommand
 {
 	Data data;
-	PFrame frame;
+	public ActionNewFile			actionNewFile;
+	public ActionOpenFile			actionOpenFile;
+	public ActionSaveFile			actionSaveFile;
+	public ActionLoadFile			actionLoadFile;
+	public ActionOpenFileFromCloud	actionOpenFileFromCloud;
+	public ActionSaveFileToCloud	actionSaveFileToCloud;
+	public ActionCloseFile			actionCloseFile;
 	
-	public PCommand(Data data)
+	public ActionColorChooser		actionColorChooser;
+	public ActionThickness			actionThickness;
+	public ActionDefaultSettings	actionDefaultSettings;
+	public ActionPlugins			actionPlugins;
+	public ActionSkins			    actionSkins;
+	public ActionAbout				actionAbout;
+	public ActionHotKeys			actionHotKeys;
+	public ActionExit				actionExit;
+	public PaintListener			mousePaint;
+	
+	public PCommand(Data data, PFrame frame)
 	{
+		actionNewFile			= new ActionNewFile();
+		actionOpenFile			= new ActionOpenFile();
+		actionSaveFile			= new ActionSaveFile();
+		actionLoadFile			= new ActionLoadFile();
+		actionOpenFileFromCloud	= new ActionOpenFileFromCloud();
+		actionSaveFileToCloud	= new ActionSaveFileToCloud();
+		actionCloseFile			= new ActionCloseFile();
+		
+		actionColorChooser		= new ActionColorChooser(data);
+		actionThickness			= new ActionThickness(data);
+		actionDefaultSettings	= new ActionDefaultSettings();
+		actionPlugins			= new ActionPlugins(data);
+		actionSkins				= new ActionSkins(data, frame);
+		actionAbout				= new ActionAbout();
+		actionHotKeys			= new ActionHotKeys();
+		actionExit				= new ActionExit();
+		mousePaint				= new PaintListener();
 		this.data = data;
 	}
 
@@ -33,20 +69,5 @@ public class PCommand
 		return data;
 	}
 
-	public ActionNewFile			actionNewFile			= new ActionNewFile();
-	public ActionOpenFile			actionOpenFile			= new ActionOpenFile();
-	public ActionSaveFile			actionSaveFile			= new ActionSaveFile();
-	public ActionLoadFile			actionLoadFile			= new ActionLoadFile();
-	public ActionOpenFileFromCloud	actionOpenFileFromCloud	= new ActionOpenFileFromCloud();
-	public ActionSaveFileToCloud	actionSaveFileToCloud	= new ActionSaveFileToCloud();
-	public ActionCloseFile			actionCloseFile			= new ActionCloseFile();
 	
-	public ActionColorChooser		actionColorChooser		= new ActionColorChooser(data);
-	public ActionThickness			actionThickness			= new ActionThickness(data);
-	public ActionDefaultSettings	actionDefaultSettings	= new ActionDefaultSettings();
-	public ActionPlugins			actionPlugins			= new ActionPlugins(data);
-	public ActionAbout				actionAbout				= new ActionAbout();
-	public ActionHotKeys			actionHotKeys			= new ActionHotKeys();
-	public ActionExit				actionExit				= new ActionExit();
-	public PaintListener			mousePaint				= new PaintListener();
 }
