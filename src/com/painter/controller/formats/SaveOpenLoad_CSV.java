@@ -8,20 +8,20 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-import com.painter.controller.shape.impl.Line;
-import com.painter.controller.shape.impl.Oval;
-import com.painter.controller.shape.impl.Rectangle;
-import com.painter.controller.shape.impl.RoundRect;
-import com.painter.model.shape.InterfaceShape;
+//import com.painter.controller.shape.impl.Line;
+//import com.painter.controller.shape.impl.Oval;
+//import com.painter.controller.shape.impl.Rectangle;
+//import com.painter.controller.shape.impl.RoundRect;
+//import com.painter.model.shape.InterfaceShape;
 
 public class SaveOpenLoad_CSV implements InterfaceImportExport
 {
-	ArrayList<FigurePanel> al = new ArrayList<FigurePanel>();
+	//ArrayList<FigurePanel> al = new ArrayList<FigurePanel>();
 	
-	public SaveOpenLoad_CSV(ArrayList<FigurePanel> al)
-	{
-		this.al = al;
-	}
+//	public SaveOpenLoad_CSV(ArrayList<FigurePanel> al)
+//	{
+//		this.al = al;
+//	}
 	
 	@Override
 	public void load(String path)
@@ -60,7 +60,7 @@ public class SaveOpenLoad_CSV implements InterfaceImportExport
 				tmpStr[j++] = tokenStr.nextToken();
 			}
 			int shapeType = Integer.parseInt(tmpStr[0]);
-			FigurePanel figure = null;
+//			FigurePanel figure = null;
 //			switch(shapeType)
 //			{
 //			case 0:
@@ -109,20 +109,21 @@ public class SaveOpenLoad_CSV implements InterfaceImportExport
 //						Integer.parseInt(tmpStr[6]));
 //				break;
 //			}			
-			al.add(figure);
-			figure = null;
+//			al.add(figure);
+//			figure = null;
 		}
 	}
 
 	@Override
 	public void save(String path)
 	{
-		String str = "shape, x1, y1, x2, y2, color, width\r\n";
-		for (int i = 0; i < al.size(); i++)
-		{
-			FigurePanel figure = al.get(i);
-			str += figure.shape + ", " + figure.x1 + ", "+ figure.y1 + ", " + figure.x2 + ", " + figure.y2 + ", " + figure.color + ", " + figure.width + "\r\n";
-		}
+		String str = "";
+//		String str = "shape, x1, y1, x2, y2, color, width\r\n";
+//		for (int i = 0; i < al.size(); i++)
+//		{
+//			FigurePanel figure = al.get(i);
+//			str += figure.shape + ", " + figure.x1 + ", "+ figure.y1 + ", " + figure.x2 + ", " + figure.y2 + ", " + figure.color + ", " + figure.width + "\r\n";
+//		}
 		try
 		{
 			if (path.equals(""))
