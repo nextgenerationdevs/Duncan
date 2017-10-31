@@ -4,5 +4,5 @@ import javax.swing.JDialog;
 
 public class SkinsDialog extends JDialog
 {
-
+	
 }

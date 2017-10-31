@@ -4,13 +4,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import com.painter.model.Data;
-import com.painter.view.modal.PluginsDialog;
+import com.painter.view.modal.AboutDialog;
+import com.painter.view.modal.ColorDialog;
+import com.painter.view.modal.ThicknessDialog;
 
-public class ActionPlugins implements ActionListener 
+public class ActionThickness implements ActionListener 
 {
 	Data data;
 	
-	public ActionPlugins(Data data)
+	public ActionThickness(Data data)
 	{
 		this.data = data;
 	}
@@ -18,6 +20,6 @@ public class ActionPlugins implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e) 
 	{
-		new PluginsDialog(data);
+		new ThicknessDialog(data);
 	}
 }

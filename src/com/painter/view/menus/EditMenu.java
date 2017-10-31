@@ -41,10 +41,13 @@ public class EditMenu extends JMenu
 			case "actionRedo": item.setIcon(new ImageIcon("resources/img/menubar/arrow-redo-icon.png"));
 							   item.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Y, ActionEvent.CTRL_MASK));
 							   /*item.addActionListener(cmd.actionPlugins);*/ break;
-			//case "actionType": item.addActionListener(cmd.actionSkins); break;
+			case "actionType": item.setIcon(new ImageIcon("resources/img/menubar/typeOfFigure-icon.png"));
+							   item.setEnabled(false);
+							   /*item.addActionListener(cmd.actionSkins);*/ break;
 			case "actionColor": item.setIcon(new ImageIcon("resources/img/menubar/colorChooser-icon.png"));
-								/*item.addActionListener(cmd.actionPlugins);*/ break;
-			//case "actionThickness": item.addActionListener(cmd.actionCloud); break;
+								item.addActionListener(cmd.actionColorChooser); break;
+			case "actionThickness": item.setIcon(new ImageIcon("resources/img/menubar/thickness-icon.png"));
+									item.addActionListener(cmd.actionThickness); break;
 			}
 			if (i == 1) 
 			{
