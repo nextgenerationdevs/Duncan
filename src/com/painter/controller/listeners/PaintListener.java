@@ -3,20 +3,29 @@ package com.painter.controller.listeners;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import com.painter.controller.PCommand;
-import com.painter.model.Data;
+import javax.swing.JPanel;
 
+import com.painter.model.Data;
+import com.painter.model.FiguresList;
+import com.painter.model.plugins.InterfaceFigure;
+import com.painter.model.plugins.PluginsList;
+
+/**
+ * @author Dmitry Chmul
+ *
+ */
 public class PaintListener extends MouseAdapter
 {
 	private Data data;
+
 	private int startX;
 	private int startY;
 	private int endX;
 	private int endY;
 
-	public PaintListener(PCommand cmd)
+	public void setData(Data data)
 	{
-		data = cmd.getData();
+		this.data = data;
 	}
 
 	//	Добавление новой фигуры в рабочую область с установленными параметрами
@@ -63,9 +72,6 @@ public class PaintListener extends MouseAdapter
 		switch(button)
 		{
 		case MouseEvent.BUTTON1:
-			endX = e.getX();
-			endY = e.getY();
-			addFigure(e);
 			break;
 		case MouseEvent.BUTTON2:
 			break;
@@ -79,10 +85,11 @@ public class PaintListener extends MouseAdapter
 	{
 		data.statusX = e.getX();
 		data.statusY = e.getY();
+
 	}
-	
-	
-//	Добавление новой фигуры в рабочую область с установленными параметрами
+
+
+	//	Добавление новой фигуры в рабочую область с установленными параметрами
 	@Override
 	public void mouseReleased(MouseEvent e)
 	{
@@ -99,16 +106,21 @@ public class PaintListener extends MouseAdapter
 			break;	
 		}
 	}
-	
+
 	private void addFigure(MouseEvent e)
 	{
 		data.statusX = e.getX();
 		data.statusY = e.getY();
-		//	TODO выбор текущего плагина из PluginsList, конструктор фигуры с размерами по умолчанию, обновление фигуры, обновление рабочей области.
+
+		InterfaceFigure figure = PluginsList.getPlugins().get(data.selectedIndex);
+		figure.setMainProperties(data.type, data.color, data.thickness);
+		figure.setCoordinates(startX, startY);			//		Или все же стандартные размеры, а настроим потом?
+		JPanel newPanel = figure.getPluginFigure();
+		FiguresList.addFigure(newPanel);
 	}
-	
+
 	private void notifyContextMenu(MouseEvent e)
 	{
-//		TODO Вызов контекстного меню
+		//		TODO Вызов контекстного меню
 	}
 }

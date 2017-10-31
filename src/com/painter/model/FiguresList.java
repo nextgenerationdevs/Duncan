@@ -17,7 +17,7 @@ public class FiguresList
 		return figures;
 	}
 	
-	public void addFigure(JPanel figure)
+	public static void addFigure(JPanel figure)
 	{
 		
 	}

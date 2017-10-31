@@ -21,12 +21,13 @@ public class PTabbedPane extends JTabbedPane
 		cmd.actionOpenFile.setTPane(this);
 		cmd.actionCloseFile.setTPane(this);
 		cmd.actionOpenFileFromCloud.setTPane(this);
+		cmd.mousePaint.setData(cmd.getData());
 		names = new ArrayList<>();
 	}
 	
 	public void addTab(String name)
 	{
-		PPanel pPanel = new PPanel(cmd.getData());
+		PPanel pPanel = new PPanel(cmd.getData());		
 		pPanel.addMouseListener(cmd.mousePaint);		
 		pPanel.addMouseMotionListener(cmd.mousePaint);
 		JScrollPane scrollPane = new JScrollPane(pPanel, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);

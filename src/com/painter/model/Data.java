@@ -28,5 +28,13 @@ public class Data
 	public void setStutusY(int statusY)
 	{
 		this.statusY = statusY;
-	}	
+	}
+	
+	// Default Properties
+	public int type;
+	public int color;
+	public int thickness = 1;
+	
+	//	Selected Plugin
+	public int selectedIndex = 0;
 }

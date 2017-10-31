@@ -1,5 +1,7 @@
 package com.painter.model.plugins;
 
+import java.awt.Graphics2D;
+
 import javax.swing.JPanel;
 
 public interface InterfaceFigure
@@ -14,7 +16,7 @@ public interface InterfaceFigure
 	public JPanel getPluginProperties();
 	
 //	Не уверен, что этот метод вообще должен быть.
-	public void drawShape(int type, int startX, int startY, int endX, int endY, int thickness, int color);
+	public void drawShape(Graphics2D graphics);
 	/**
 	 * Перемещение фигуры на новое место рабочей области
 	 * @param newX	новая x-координата
@@ -40,7 +42,12 @@ public interface InterfaceFigure
 	 */
 	public int[] getMainProperties();
 	/**
+	 * @param x x-координата 
+	 * @param y y-координата
+	 */
+	public void setCoordinates(int x, int y);
+	/**
 	 * @return выбрана текущая фигура
 	 */
-	public boolean isSelected(); 
+	public boolean isSelected();
 }

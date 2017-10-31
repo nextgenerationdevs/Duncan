@@ -41,5 +41,5 @@ public class PCommand
 	public ActionAbout				actionAbout				= new ActionAbout();
 	public ActionHotKeys			actionHotKeys			= new ActionHotKeys();
 	public ActionExit				actionExit				= new ActionExit();
-	public PaintListener			mousePaint				= new PaintListener(this);
+	public PaintListener			mousePaint				= new PaintListener();
 }
