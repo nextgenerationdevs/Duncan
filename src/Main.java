@@ -1,3 +1,7 @@
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 import com.painter.view.PFrame;
@@ -8,12 +12,12 @@ public class Main
 	{
 		try
 		{
-			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
+			for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels())
 			{
 				if ("Nimbus".equals(info.getName()))
 				{
 
-					javax.swing.UIManager.setLookAndFeel(info.getClassName());
+					UIManager.setLookAndFeel(info.getClassName());
 
 					break;
 				}
@@ -23,7 +27,7 @@ public class Main
 		catch (ClassNotFoundException | InstantiationException | IllegalAccessException
 				| UnsupportedLookAndFeelException ex)
 		{
-			java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
 		}
 
 		new PFrame();

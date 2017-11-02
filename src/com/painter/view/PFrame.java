@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
+import javax.swing.JTabbedPane;
 
 import com.painter.controller.PCommand;
 import com.painter.model.Data;
