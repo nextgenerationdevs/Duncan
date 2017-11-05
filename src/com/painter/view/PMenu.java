@@ -18,7 +18,7 @@ public class PMenu extends JMenuBar
 	private WindowMenu 	windowMenu;
 	private OptionsMenu optionsMenu;
 	private HelpMenu 	helpMenu;
-	
+
 	public PMenu(Data data, PCommand cmd)
 	{
 		fileMenu 	= new FileMenu(data, cmd);
@@ -26,22 +26,27 @@ public class PMenu extends JMenuBar
 		windowMenu 	= new WindowMenu(data, cmd);
 		optionsMenu = new OptionsMenu(data, cmd);
 		helpMenu 	= new HelpMenu(data, cmd);
-		
+
+		createMenu();
+	}
+
+	private void createMenu()
+	{
 		Object[] obj = {
-					   	fileMenu.createFileMenu(), 
-					   	editMenu.createEditMenu(), 
-					   	windowMenu.createWindowMenu(), 
-					   	optionsMenu.createOptionsMenu(), 
-					   	helpMenu.createHelpMenu()
-					   };
+				fileMenu.createFileMenu(), 
+				editMenu.createEditMenu(), 
+				windowMenu.createWindowMenu(), 
+				optionsMenu.createOptionsMenu(), 
+				helpMenu.createHelpMenu()
+		};
 		for (int i = 0; i < obj.length; i++) 
 		{
 			add((JMenu) obj[i]);
 		}
 	}
-
-	private void refreshMenu()
+	
+	public void refreshMenu()
 	{
-
+		
 	}
 }

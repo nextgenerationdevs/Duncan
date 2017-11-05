@@ -30,7 +30,7 @@ public class ActionLoadFile implements ActionListener
 		
 		if (result == JFileChooser.APPROVE_OPTION) 
 		{
-			new SaveOpenLoad_JSON().load(dialog.getSelectedFile().getPath());
+			new SaveOpenLoad_JSON().open(dialog.getSelectedFile().getPath());
 			pp.repaint();
 		}
 	}

@@ -1,13 +1,16 @@
 package com.painter.model;
 
+import java.util.ResourceBundle;
+
+import com.painter.model.lang.InterfaceBundle;
 import com.painter.model.lang.InterfaceLanguage;
 import com.painter.model.lang.LanguageFactory;
 import com.painter.model.plugins.InterfaceFigure;
 
 public class Data
 {
-	public static InterfaceLanguage dictionary = LanguageFactory.activeLanguage();
-
+	public ResourceBundle bundle = LanguageFactory.activeLanguage();
+	
 	public int statusX = 0;
 	public int statusY = 0;
 	
@@ -21,11 +24,11 @@ public class Data
 	{
 		this.statusX = statusX;
 	}
-	public int getStutusY()
+	public int getStatusY()
 	{
 		return statusY;
 	}
-	public void setStutusY(int statusY)
+	public void setStatusY(int statusY)
 	{
 		this.statusY = statusY;
 	}

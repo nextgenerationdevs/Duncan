@@ -3,6 +3,7 @@ package com.painter.controller;
 import java.awt.event.ActionListener;
 
 import com.painter.controller.listeners.ActionAbout;
+import com.painter.controller.listeners.ActionAddLanguage;
 import com.painter.controller.listeners.ActionCloseFile;
 import com.painter.controller.listeners.ActionColorChooser;
 import com.painter.controller.listeners.ActionDefaultSettings;
@@ -15,15 +16,20 @@ import com.painter.controller.listeners.ActionOpenFileFromCloud;
 import com.painter.controller.listeners.ActionPlugins;
 import com.painter.controller.listeners.ActionSaveFile;
 import com.painter.controller.listeners.ActionSaveFileToCloud;
+import com.painter.controller.listeners.ActionSetLanguage;
 import com.painter.controller.listeners.ActionSkins;
+import com.painter.controller.listeners.ActionStatusBar;
 import com.painter.controller.listeners.ActionThickness;
 import com.painter.controller.listeners.PaintListener;
 import com.painter.model.Data;
 import com.painter.view.PFrame;
+import com.painter.view.PMenu;
 
 public class PCommand
 {
 	Data data;
+	PMenu menuBar;
+	
 	public ActionNewFile			actionNewFile;
 	public ActionOpenFile			actionOpenFile;
 	public ActionSaveFile			actionSaveFile;
@@ -31,6 +37,7 @@ public class PCommand
 	public ActionOpenFileFromCloud	actionOpenFileFromCloud;
 	public ActionSaveFileToCloud	actionSaveFileToCloud;
 	public ActionCloseFile			actionCloseFile;
+	public ActionStatusBar			actionStatusBar;
 	
 	public ActionColorChooser		actionColorChooser;
 	public ActionThickness			actionThickness;
@@ -42,8 +49,13 @@ public class PCommand
 	public ActionExit				actionExit;
 	public PaintListener			mousePaint;
 	
-	public PCommand(Data data, PFrame frame)
+	public ActionAddLanguage 		actionAddLanguage;
+	public ActionSetLanguage		actionSetLanguage;
+	
+	public PCommand(Data data, PFrame frame, PMenu menuBar)
 	{
+		this.data = data;
+		
 		actionNewFile			= new ActionNewFile();
 		actionOpenFile			= new ActionOpenFile();
 		actionSaveFile			= new ActionSaveFile();
@@ -51,6 +63,7 @@ public class PCommand
 		actionOpenFileFromCloud	= new ActionOpenFileFromCloud();
 		actionSaveFileToCloud	= new ActionSaveFileToCloud();
 		actionCloseFile			= new ActionCloseFile();
+		actionStatusBar			= new ActionStatusBar(frame.statusBar, data);
 		
 		actionColorChooser		= new ActionColorChooser(data);
 		actionThickness			= new ActionThickness(data);
@@ -60,14 +73,14 @@ public class PCommand
 		actionAbout				= new ActionAbout();
 		actionHotKeys			= new ActionHotKeys();
 		actionExit				= new ActionExit();
-		mousePaint				= new PaintListener();
-		this.data = data;
+		mousePaint				= new PaintListener();	
+		
+		actionAddLanguage		= new ActionAddLanguage(data, menuBar);
+		actionSetLanguage		= new ActionSetLanguage(data, menuBar);
 	}
 
 	public Data getData()
 	{
 		return data;
-	}
-
-	
+	}	
 }

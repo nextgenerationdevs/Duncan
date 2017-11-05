@@ -20,14 +20,12 @@ public class HelpMenu extends JMenu
 	
 	public JMenu createHelpMenu()
 	{
-		JMenu help = new JMenu("actionHelp");	
-		help.setText(data.dictionary.getDictionary().get(help.getActionCommand()));
-
+		JMenu help = new JMenu(data.bundle.getString("actionHelp"));	
+		
 		String[] arrayStr = {"actionHotKeys", "actionAbout"};
 		for (int i = 0; i < arrayStr.length; i++)
 		{
-			JMenuItem item = new JMenuItem(arrayStr[i]);
-			item.setText(data.dictionary.getDictionary().get(item.getActionCommand()));
+			JMenuItem item = new JMenuItem(data.bundle.getString(arrayStr[i]));
 			switch (arrayStr[i]) 
 			{
 				case "actionHotKeys": item.setIcon(new ImageIcon("resources/img/menubar/hotKeys-icon.png"));

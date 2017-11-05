@@ -15,16 +15,15 @@ import com.painter.model.lang.LanguageFactory;
 
 public class PFrame extends JFrame
 {
-
 	public PTabbedPane tpane;
-	
-
+	public PStatusBar statusBar;
+	public PMenu menuBar;
 
 	public PFrame()
 	{
 		LanguageFactory.updateLanguages();
 		Data data = new Data();
-		PCommand cmd = new PCommand(data, this);
+		PCommand cmd = new PCommand(data, this, menuBar);
 		
 		setTitle("Duncan");		
 		setIconImage(Images.getIcon());		
@@ -35,10 +34,13 @@ public class PFrame extends JFrame
 					 Toolkit.getDefaultToolkit().getScreenSize().height / 2 - 768 / 2);
 
 //		getContentPane().setBackground(Color.GRAY);
-								
-		setJMenuBar(new PMenu(data, cmd));		
+		menuBar = new PMenu(data, cmd);			
+		setJMenuBar(menuBar);
+		
 		add(new PToolBar(cmd), BorderLayout.NORTH);		
-		add(new PStatusBar(), BorderLayout.SOUTH);
+		
+		statusBar = new PStatusBar("Welcome");
+		add(statusBar, BorderLayout.SOUTH);
 		
 		tpane = new PTabbedPane(cmd);
 		add(tpane, BorderLayout.CENTER);

@@ -3,6 +3,8 @@ package com.painter.controller.formats;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import com.painter.controller.PPanel;
+import com.painter.model.FigurePanel;
+import com.painter.model.FiguresList;
 
 public class ImportExportImpl 
 {
@@ -21,17 +23,17 @@ public class ImportExportImpl
 	public InterfaceImportExport getFormat(String filterDescription, PPanel pp) 
 	{
 		InterfaceImportExport format = null;
-//		switch (filterDescription)
-//		{
+		switch (filterDescription)
+		{
 //			case "XML Files (*.xml)":
-//				format = new SaveOpenLoad_XML(pp.figures);	break;
+//				format = new SaveOpenLoad_XML(FiguresList);	break;
 //			case "JSON Files (*.json)":
 //				format = new SaveOpenLoad_JSON(pp.figures);	break;
 //			case "CSV Files (*.csv)":
 //				format = new SaveOpenLoad_CSV(pp.figures);	break;
 //			case "YAML Files (*.yml)":
 //				format = new SaveOpenLoad_YAML(pp.figures);	break;
-//		}
+		}
 		return format;
 	}
 }

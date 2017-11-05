@@ -29,14 +29,14 @@ public class ActionOpenFile implements ActionListener
 		JFileChooser fc = new JFileChooser();
 		FileNameExtensionFilter[] filters = new ImportExportImpl().getFilters();			
 		for (FileNameExtensionFilter filter : filters)
-			fc.addChoosableFileFilter(filter);
-		fc.setFileFilter(filters[0]);
-		
-		int result = fc.showOpenDialog(null);
-		
-		if (result == JFileChooser.APPROVE_OPTION) 
 		{
-			PPanel pp = null;
+			fc.addChoosableFileFilter(filter);
+		}	
+		fc.setFileFilter(filters[0]);
+		int result = fc.showOpenDialog(null);
+//		if (result == JFileChooser.APPROVE_OPTION) 
+//		{
+//			PPanel pp = null;
 //			if (!tPane.isEmpty())
 //				pp = panelList.get(tPane.getSelectedIndex());
 //			else
@@ -45,9 +45,9 @@ public class ActionOpenFile implements ActionListener
 //				tPane.addTab("New Tab", panelList.get(0));
 //				pp = panelList.get(0);
 //			}
-			pp.setBackground(Color.WHITE);
-			new ImportExportImpl().getFormat(fc.getFileFilter().getDescription(), pp).load(fc.getSelectedFile().getPath());
-			pp.repaint();
-		}
+//			pp.setBackground(Color.WHITE);
+//			new ImportExportImpl().getFormat(fc.getFileFilter().getDescription(), pp).load(fc.getSelectedFile().getPath());
+//			pp.repaint();
+//		}
 	}		
 }

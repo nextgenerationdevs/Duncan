@@ -8,15 +8,17 @@ import javax.swing.border.EtchedBorder;
 
 public class PStatusBar extends JPanel
 {
-	private static final JLabel statusCoord = new JLabel("X:	 " + "Y:		");
-	private static final JLabel statusFile = new JLabel("file:");
+	private static final JLabel statusCoord = new JLabel();
+	private static final JLabel statusFile = new JLabel();
 	
-	public PStatusBar() 
+	public PStatusBar(String str) 
 	{
 		setLayout(new BorderLayout());
 		setBorder(new EtchedBorder());
+		statusCoord.setText(str);
 		add(statusCoord, BorderLayout.WEST);
 		add(statusFile, BorderLayout.EAST);
+		
 	}
 
 	public static void setStatus(String coordinates, String file) 

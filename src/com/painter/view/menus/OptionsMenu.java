@@ -10,6 +10,8 @@ import javax.swing.KeyStroke;
 
 import com.painter.controller.PCommand;
 import com.painter.model.Data;
+import com.painter.model.lang.InterfaceBundle;
+import com.painter.model.lang.LanguageFactory;
 
 public class OptionsMenu extends JMenu
 {
@@ -24,14 +26,12 @@ public class OptionsMenu extends JMenu
 	
 	public JMenu createOptionsMenu()
 	{
-		JMenu options = new JMenu("actionOptions");
-		options.setText(data.dictionary.getDictionary().get(options.getActionCommand()));
+		JMenu options = new JMenu(data.bundle.getString("actionOptions"));
 
 		String[] arrayStr = {"actionPlugins", "actionSkins", "actionCloud", };
 		for (int i = 0; i < arrayStr.length; i++) 
 		{
-			JMenuItem item = new JMenuItem(arrayStr[i]);
-			item.setText(data.dictionary.getDictionary().get(item.getActionCommand()));		
+			JMenuItem item = new JMenuItem(data.bundle.getString(arrayStr[i]));	
 			switch (arrayStr[i]) 
 			{
 				case "actionPlugins": item.setIcon(new ImageIcon("resources/img/menubar/plugins-icon.png"));
@@ -45,24 +45,21 @@ public class OptionsMenu extends JMenu
 									/*item.addActionListener(cmd.actionPlugins);*/ break;
 			}
 			options.add(item);
+		}	
+		JMenu language = new JMenu(data.bundle.getString("actionLanguage"));
+		for (InterfaceBundle lang : LanguageFactory.bundles)
+		{
+			JMenuItem item = new JMenuItem(lang.getName());
+			item.addActionListener(cmd.actionSetLanguage);
+			language.add(item);
 		}
+		JMenuItem addLanguage = new JMenuItem(data.bundle.getString("actionAddLanguage"));
+		addLanguage.addActionListener(cmd.actionSetLanguage);
 		
-		JMenu language = new JMenu("actionLanguage");
-		language.setText(data.dictionary.getDictionary().get(language.getActionCommand()));
-		
-		JMenuItem english = new JMenuItem("English");				//	’ардкод, посмотреть, как безболезненно выт€нуть из DefaultDictionary
-		
-		JMenuItem addLanguage = new JMenuItem("actionAddLanguage");
-		addLanguage.setText(data.dictionary.getDictionary().get(addLanguage.getActionCommand()));
-//		for (InterfaceLanguage lang : LanguageFactory.languages)
-//		{
-//			language.add(new JMenuItem(lang.getName()));
-//		}
-		language.add(english);
 		language.addSeparator();
 		language.add(addLanguage);
+		
 		options.add(language);
-
 		return options;
 	}
 }

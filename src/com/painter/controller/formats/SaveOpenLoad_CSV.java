@@ -8,23 +8,24 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-//import com.painter.controller.shape.impl.Line;
-//import com.painter.controller.shape.impl.Oval;
-//import com.painter.controller.shape.impl.Rectangle;
-//import com.painter.controller.shape.impl.RoundRect;
-//import com.painter.model.shape.InterfaceShape;
+import com.painter.model.FigurePanel;
+import com.painter.model.FiguresList;
+
 
 public class SaveOpenLoad_CSV implements InterfaceImportExport
 {
-	//ArrayList<FigurePanel> al = new ArrayList<FigurePanel>();
+	ArrayList<FigurePanel> al = new ArrayList<FigurePanel>();
+	//ArrayList<FigurePanel> al = FiguresList.getFigures();
 	
-//	public SaveOpenLoad_CSV(ArrayList<FigurePanel> al)
-//	{
-//		this.al = al;
-//	}
+	public SaveOpenLoad_CSV() {}
+
+	public SaveOpenLoad_CSV(ArrayList<FigurePanel> al)
+	{
+		this.al = al;
+	}
 	
 	@Override
-	public void load(String path)
+	public void open(String path)
 	{
 		String str = "";
 		try
@@ -36,9 +37,9 @@ public class SaveOpenLoad_CSV implements InterfaceImportExport
 				str += "\r\n";
 			}
 			br.close();
-		} catch (IOException e)
+		} 
+		catch (IOException e)
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -60,7 +61,7 @@ public class SaveOpenLoad_CSV implements InterfaceImportExport
 				tmpStr[j++] = tokenStr.nextToken();
 			}
 			int shapeType = Integer.parseInt(tmpStr[0]);
-//			FigurePanel figure = null;
+			FigurePanel figure = null;
 //			switch(shapeType)
 //			{
 //			case 0:
@@ -109,16 +110,15 @@ public class SaveOpenLoad_CSV implements InterfaceImportExport
 //						Integer.parseInt(tmpStr[6]));
 //				break;
 //			}			
-//			al.add(figure);
-//			figure = null;
+			al.add(figure);
+			figure = null;
 		}
 	}
 
 	@Override
 	public void save(String path)
 	{
-		String str = "";
-//		String str = "shape, x1, y1, x2, y2, color, width\r\n";
+		String str = "shape, x1, y1, x2, y2, color, width\r\n";
 //		for (int i = 0; i < al.size(); i++)
 //		{
 //			FigurePanel figure = al.get(i);
@@ -127,22 +127,20 @@ public class SaveOpenLoad_CSV implements InterfaceImportExport
 		try
 		{
 			if (path.equals(""))
+			{
 				path = "untitled.csv";
+			}			
 			else if (!path.contains(".csv"))
+			{
 				path += ".csv";
+			}	
 			BufferedWriter bw = new BufferedWriter(new FileWriter(path));
 			bw.write(str);
 			bw.close();
-		} catch (IOException e)
+		} 
+		catch (IOException e)
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
-
-	@Override
-	public void open(String path) {
-		// TODO Auto-generated method stub
-		
 	}
 }

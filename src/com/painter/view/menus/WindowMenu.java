@@ -24,15 +24,12 @@ public class WindowMenu extends JMenu
 	
 	public JMenu createWindowMenu()
 	{
-		JMenu window = new JMenu("actionWindow");	
-		window.setText(data.dictionary.getDictionary().get(window.getActionCommand()));
+		JMenu window = new JMenu(data.bundle.getString("actionWindow"));	
 
 		String[] arrayStr = {"actionNextTab", "actionPrevTab", "actionTab"};
 		for (int i = 0; i < arrayStr.length; i++) 
 		{
-			JMenuItem item = new JMenuItem(arrayStr[i]);
-			item.setText(data.dictionary.getDictionary().get(item.getActionCommand()));
-			window.add(item);
+			JMenuItem item = new JMenuItem(data.bundle.getString(arrayStr[i]));
 			switch (arrayStr[i]) 
 			{
 				case "actionNextTab": item.setIcon(new ImageIcon("resources/img/menubar/nextTab-icon.png"));
@@ -43,6 +40,7 @@ public class WindowMenu extends JMenu
 				   					  /*item.addActionListener(cmd.?);*/ break;
 				case "actionTab": /*item.addActionListener(cmd.?);*/ break;
 			}
+			window.add(item);
 			if (i == 1) 
 			{
 				window.addSeparator();

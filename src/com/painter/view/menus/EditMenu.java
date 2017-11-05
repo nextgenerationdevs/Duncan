@@ -24,15 +24,12 @@ public class EditMenu extends JMenu
 
 	public JMenu createEditMenu()
 	{
-		JMenu edit = new JMenu("actionEdit");
-		edit.setText(data.dictionary.getDictionary().get(edit.getActionCommand()));
+		JMenu edit = new JMenu(data.bundle.getString("actionEdit"));
 
 		String[] arrayStr = {"actionUndo", "actionRedo", "actionType", "actionColor", "actionThickness"};
 		for (int i = 0; i < arrayStr.length; i++) 
 		{
-			JMenuItem item = new JMenuItem(arrayStr[i]);
-			item.setText(data.dictionary.getDictionary().get(item.getActionCommand()));
-			edit.add(item);
+			JMenuItem item = new JMenuItem(data.bundle.getString(arrayStr[i]));
 			switch (arrayStr[i]) 
 			{
 			case "actionUndo": item.setIcon(new ImageIcon("resources/img/menubar/arrow-undo-icon.png"));
@@ -49,6 +46,7 @@ public class EditMenu extends JMenu
 			case "actionThickness": item.setIcon(new ImageIcon("resources/img/menubar/thickness-icon.png"));
 									item.addActionListener(cmd.actionThickness); break;
 			}
+			edit.add(item);
 			if (i == 1) 
 			{
 				edit.addSeparator();

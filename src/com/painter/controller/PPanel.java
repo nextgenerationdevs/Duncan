@@ -4,6 +4,8 @@ import java.awt.Color;
 //import java.awt.event.MouseEvent;
 //import java.awt.event.MouseMotionListener;
 import java.awt.Graphics;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
 
 import javax.swing.JPanel;
 
@@ -11,8 +13,9 @@ import com.painter.model.Data;
 import com.painter.model.FiguresList;
 import com.painter.model.plugins.InterfaceFigure;
 import com.painter.model.plugins.PluginsList;
+import com.painter.view.PStatusBar;
 
-public class PPanel extends JPanel	// implements MouseMotionListener
+public class PPanel extends JPanel
 {
 	Data data;
 	
@@ -32,16 +35,4 @@ public class PPanel extends JPanel	// implements MouseMotionListener
 		}
 		super.paint(arg0);
 	}
-//	
-//	@Override
-//	public void mouseMoved(MouseEvent e) 
-//	{
-//		PStatusBar.setStatus("X: " + e.getX() + "  " + "Y: " + e.getY(), "file:");
-//	}
-//
-//	@Override
-//	public void mouseDragged(MouseEvent e)
-//	{
-//			
-//	}
 }

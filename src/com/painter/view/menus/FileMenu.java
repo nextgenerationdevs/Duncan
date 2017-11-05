@@ -24,16 +24,13 @@ public class FileMenu extends JMenu
 	
 	public JMenu createFileMenu()
 	{
-		JMenu file = new JMenu("actionFile");	
-		file.setText(data.dictionary.getDictionary().get(file.getActionCommand()));
+		JMenu file = new JMenu(data.bundle.getString("actionFile"));	
 
 		String[] arrayStr = {"actionNew", "actionOpen", "actionOpenFromCloud", "actionLoad", "actionSave", "actionSaveToCloud", 
 				"actionReload", "actionClose", "actionExit"};
 		for (int i = 0; i < arrayStr.length; i++) 
 		{
-			JMenuItem item = new JMenuItem(arrayStr[i]);
-			item.setText(data.dictionary.getDictionary().get(item.getActionCommand()));
-			
+			JMenuItem item = new JMenuItem(data.bundle.getString(arrayStr[i]));	
 			switch (arrayStr[i]) 
 			{
 				case "actionNew": item.setIcon(new ImageIcon("resources/img/menubar/newFile-icon.png"));
