@@ -8,18 +8,18 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-import com.painter.model.FigurePanel;
-import com.painter.model.FiguresList;
+import com.painter.controller.plugins.list.def.FigurePanel;
+import com.painter.model.plugins.InterfaceFigure;
 
 
 public class SaveOpenLoad_CSV implements InterfaceImportExport
 {
-	ArrayList<FigurePanel> al = new ArrayList<FigurePanel>();
+	ArrayList<InterfaceFigure> al = new ArrayList<InterfaceFigure>();
 	//ArrayList<FigurePanel> al = FiguresList.getFigures();
 	
 	public SaveOpenLoad_CSV() {}
 
-	public SaveOpenLoad_CSV(ArrayList<FigurePanel> al)
+	public SaveOpenLoad_CSV(ArrayList<InterfaceFigure> al)
 	{
 		this.al = al;
 	}
@@ -61,7 +61,7 @@ public class SaveOpenLoad_CSV implements InterfaceImportExport
 				tmpStr[j++] = tokenStr.nextToken();
 			}
 			int shapeType = Integer.parseInt(tmpStr[0]);
-			FigurePanel figure = null;
+			InterfaceFigure figure = null;
 //			switch(shapeType)
 //			{
 //			case 0:

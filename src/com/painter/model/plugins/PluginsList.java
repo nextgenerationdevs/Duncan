@@ -3,7 +3,7 @@ package com.painter.model.plugins;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.painter.controller.plugins.list.DefaultPlugin;
+import com.painter.controller.plugins.list.def.DefaultPlugin;
 
 public class PluginsList 
 {

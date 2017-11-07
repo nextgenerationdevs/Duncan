@@ -8,16 +8,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-import com.painter.model.FiguresList;
+import com.painter.model.plugins.InterfaceFigure;
 
 
 public class SaveOpenLoad_YAML implements InterfaceImportExport
 {
-	ArrayList<FiguresList> al = null;
+	ArrayList<InterfaceFigure> al = null;
 	
 	public SaveOpenLoad_YAML(){}
 	
-	public SaveOpenLoad_YAML(ArrayList<FiguresList> al)
+	public SaveOpenLoad_YAML(ArrayList<InterfaceFigure> al)
 	{
 		this.al = al;
 	}
@@ -44,7 +44,7 @@ public class SaveOpenLoad_YAML implements InterfaceImportExport
 		{
 			strParsed[count++] = strTk.nextToken();
 		}
-		FiguresList figure = null;
+		InterfaceFigure figure = null;
 		for (int i = 0; i < strParsed.length; i++)
 		{
 			if (strParsed[i].equals("shape"))
@@ -74,7 +74,7 @@ public class SaveOpenLoad_YAML implements InterfaceImportExport
 	public void save(String path)
 	{
 		String str = "[";
-		for (FiguresList figure : al)
+		for (InterfaceFigure figure : al)
 		{
 //			str += "{\"shape:\"" + figure.shape + "\"x1\"" + figure.x1 + "\"y1\"" + figure.y1 + "\"x2\"" + figure.x2 +
 //				   "\"y2\"" + figure.y2 + "\"clr\"" + figure.clr + "\"width\"" + figure.width + "}";

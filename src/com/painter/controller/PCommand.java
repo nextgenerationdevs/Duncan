@@ -73,7 +73,7 @@ public class PCommand
 		actionAbout				= new ActionAbout();
 		actionHotKeys			= new ActionHotKeys();
 		actionExit				= new ActionExit();
-		mousePaint				= new PaintListener();	
+		mousePaint				= new PaintListener(this, data);	
 		
 		actionAddLanguage		= new ActionAddLanguage(data, menuBar);
 		actionSetLanguage		= new ActionSetLanguage(data, menuBar);

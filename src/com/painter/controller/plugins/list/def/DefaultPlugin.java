@@ -1,17 +1,14 @@
-package com.painter.controller.plugins.list;
+package com.painter.controller.plugins.list.def;
 
-import java.awt.BasicStroke;
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics2D;
-import java.awt.Stroke;
-
 import javax.swing.JPanel;
+
+import com.painter.model.Type;
 import com.painter.model.plugins.InterfaceFigure;
 
 public class DefaultPlugin implements InterfaceFigure
 {
-	private int type;
+	private Type type;
 	private int color;
 	private int thickness;
 	private boolean status;
@@ -21,22 +18,35 @@ public class DefaultPlugin implements InterfaceFigure
 	private int width;
 	private int height;
 	
-	private JPanel thisFigure;
+	private FigurePanel thisFigure;
 	private JPanel thisProperties;
 	
 	public DefaultPlugin(int x, int y)
 	{
-		type = 0;
-		color = 0;
-		thickness = 1;
 		this.x = x;
 		this.y = y;
-		width = 200;
-		height = 150;
+		init();
+	}
+	
+	public int getX()
+	{
+		return x;
+	}
+	
+	public int getY()
+	{
+		return y;
+	}
+	
+	void init()
+	{
+		type = Type.rectangle;
+		color = 0;
+		thickness = 1;
+		width = 160;
+		height = 90;
 		
-		thisFigure = new JPanel();
-		thisFigure.setBackground(new Color(Color.TRANSLUCENT));
-		thisFigure.setBounds(x, y, width, height);
+		thisFigure = new FigurePanel(0, 0, width + thickness, height + thickness, color, thickness, type);
 	}
 
 	@Override
@@ -49,31 +59,6 @@ public class DefaultPlugin implements InterfaceFigure
 	public JPanel getPluginProperties() 
 	{
 		return null;
-	}
-
-	@Override
-	public void drawShape(Graphics2D graphics)
-	{
-		Graphics2D graphics2d = (Graphics2D)graphics;
-		graphics.setStroke(new BasicStroke(thickness));
-		graphics.setColor(new Color(color));
-		switch(type)
-		{
-		case 0:
-			graphics.drawRect(x, y, width, height);
-			break;
-		case 1:
-			graphics.drawOval(x, y, width, height);
-			break;
-		case 2:
-			graphics.drawRoundRect(x, y, width, height, (int)(width * 0.05), (int)(height * 0.05));
-			break;
-		case 3:
-			graphics.drawLine(x, y, width, height);
-			break;
-		default:
-			break;
-		}
 	}
 	
 	@Override
@@ -100,17 +85,18 @@ public class DefaultPlugin implements InterfaceFigure
 	}
 
 	@Override
-	public void setMainProperties(int type, int color, int thickness)
+	public void setMainProperties(Type type, int color, int thickness)
 	{
 		this.type = type;
 		this.color = color;
 		this.thickness = thickness;
+		thisFigure =  new FigurePanel(0, 0, width + thickness, height + thickness, color, thickness, type);
 	}
 
 	@Override
 	public int[] getMainProperties() 
 	{
-		int[] ret = {type, color, thickness};
+		int[] ret = {color, thickness};
 		return ret;
 	}
 
@@ -125,6 +111,12 @@ public class DefaultPlugin implements InterfaceFigure
 	{
 		this.x = x;
 		this.y = y;		
+	}
+
+	@Override
+	public InterfaceFigure getInstance(InterfaceFigure figure)
+	{
+		return new DefaultPlugin(((DefaultPlugin)figure).getX(), ((DefaultPlugin)figure).getY());		
 	}
 
 }

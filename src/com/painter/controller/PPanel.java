@@ -1,38 +1,47 @@
 package com.painter.controller;
 
 import java.awt.Color;
-//import java.awt.event.MouseEvent;
-//import java.awt.event.MouseMotionListener;
-import java.awt.Graphics;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
+import java.awt.Component;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import javax.swing.JPanel;
 
-import com.painter.model.Data;
-import com.painter.model.FiguresList;
 import com.painter.model.plugins.InterfaceFigure;
-import com.painter.model.plugins.PluginsList;
-import com.painter.view.PStatusBar;
 
 public class PPanel extends JPanel
 {
-	Data data;
+	PCommand cmd;
+	public List<InterfaceFigure> figures = Collections.synchronizedList(new ArrayList<>());
 	
-	public PPanel (Data data)
+	public PPanel (PCommand cmd)
 	{
-		this.data = data;
-//		setSize(1000, 800);
+		setLayout(null);
+		this.cmd = cmd;
+		addMouseListener(cmd.mousePaint);
+		addMouseMotionListener(cmd.mousePaint);
+		subscribeListener();
 		setBackground(Color.WHITE);
 	}
 	
-	@Override
-	public void paint(Graphics arg0)
+	public void initialize()
 	{
-		for (JPanel figure : FiguresList.getFigures())
+		for (Component comp : getComponents())
 		{
-			add(figure);
+			remove(comp);
 		}
-		super.paint(arg0);
+		
+		for (InterfaceFigure figure : figures)
+		{
+			add(figure.getPluginFigure());
+		}
+		revalidate();
+		repaint();
+	}
+	
+	public void subscribeListener()
+	{
+		cmd.mousePaint.setPPanel(this);
 	}
 }

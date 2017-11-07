@@ -33,7 +33,7 @@ public class SkinsDialog extends JDialog
 		this.data = data;
 		setTitle("Skins Management");
 		
-		PPanel pp = new PPanel(data);
+		JPanel pp = new JPanel();
 		int width = 300;
 		int height = 500;
 		int x = pp.getToolkit().getScreenSize().width / 2 - width / 2;

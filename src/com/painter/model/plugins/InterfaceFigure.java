@@ -4,8 +4,11 @@ import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
+import com.painter.model.Type;
+
 public interface InterfaceFigure
 {
+	public InterfaceFigure getInstance(InterfaceFigure figure);
 	/**
 	 * @return Панель с новым контентом
 	 */
@@ -16,7 +19,7 @@ public interface InterfaceFigure
 	public JPanel getPluginProperties();
 	
 //	Не уверен, что этот метод вообще должен быть.
-	public void drawShape(Graphics2D graphics);
+//	public void drawShape(Graphics2D graphics);
 	/**
 	 * Перемещение фигуры на новое место рабочей области
 	 * @param newX	новая x-координата
@@ -36,7 +39,7 @@ public interface InterfaceFigure
 	 * @param color цвет линии
 	 * @param thickness толщина линии
 	 */
-	public void setMainProperties(int type, int color, int thickness);
+	public void setMainProperties(Type type, int color, int thickness);
 	/**
 	 * @return type, color, thickness фигуры
 	 */

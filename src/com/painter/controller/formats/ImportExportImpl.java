@@ -3,8 +3,6 @@ package com.painter.controller.formats;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import com.painter.controller.PPanel;
-import com.painter.model.FigurePanel;
-import com.painter.model.FiguresList;
 
 public class ImportExportImpl 
 {

@@ -8,16 +8,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-import com.painter.model.FiguresList;
+import com.painter.model.plugins.InterfaceFigure;
 
 
 public class SaveOpenLoad_XML implements InterfaceImportExport
 {
-	ArrayList<FiguresList> al = null;
+	ArrayList<InterfaceFigure> al = null;
 	
 	public SaveOpenLoad_XML(){}
 	
-	public SaveOpenLoad_XML(ArrayList<FiguresList> al)
+	public SaveOpenLoad_XML(ArrayList<InterfaceFigure> al)
 	{
 		this.al = al;
 	}
@@ -44,7 +44,7 @@ public class SaveOpenLoad_XML implements InterfaceImportExport
 		{
 			strParsed[count++] = strTk.nextToken();
 		}
-		FiguresList figure = null;
+		InterfaceFigure figure = null;
 		for (int i = 0; i < strParsed.length; i++)
 		{
 			if (strParsed[i].equals("shape"))
