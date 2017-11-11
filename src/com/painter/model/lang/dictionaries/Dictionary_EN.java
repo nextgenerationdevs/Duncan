@@ -9,7 +9,7 @@ import com.painter.model.lang.InterfaceBundle;
 public class Dictionary_EN extends ListResourceBundle implements InterfaceBundle
 {
 	private boolean status;
-	private static final String resourceBundle = "com.painter.model.lang.dictionaries.Dictionary_EN";
+	public static final String resourceBundle = "com.painter.model.lang.dictionaries.Dictionary_EN";
 	private static final String name = "English";
 	
 	private static final Object[][] content = 
@@ -55,6 +55,7 @@ public class Dictionary_EN extends ListResourceBundle implements InterfaceBundle
 	@Override
 	public ResourceBundle returnBundle()
 	{
+		Locale.setDefault(Locale.ENGLISH);
 		return ResourceBundle.getBundle(resourceBundle);
 	}
 }

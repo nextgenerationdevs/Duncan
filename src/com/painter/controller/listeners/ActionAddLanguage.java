@@ -12,12 +12,10 @@ import com.painter.view.modal.AddLanguageDialog;
 public class ActionAddLanguage implements ActionListener 
 {
 	Data data;
-	PMenu menuBar;
-	
-	public ActionAddLanguage(Data data, PMenu menuBar)
+
+	public ActionAddLanguage(Data data)
 	{
 		this.data = data;
-		this.menuBar = menuBar;
 	}
 	
 	@Override

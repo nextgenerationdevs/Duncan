@@ -27,7 +27,7 @@ public class OptionsMenu extends JMenu
 	public JMenu createOptionsMenu()
 	{
 		JMenu options = new JMenu(data.bundle.getString("actionOptions"));
-
+		
 		String[] arrayStr = {"actionPlugins", "actionSkins", "actionCloud", };
 		for (int i = 0; i < arrayStr.length; i++) 
 		{
@@ -54,7 +54,7 @@ public class OptionsMenu extends JMenu
 			language.add(item);
 		}
 		JMenuItem addLanguage = new JMenuItem(data.bundle.getString("actionAddLanguage"));
-		addLanguage.addActionListener(cmd.actionSetLanguage);
+		addLanguage.addActionListener(cmd.actionAddLanguage);
 		
 		language.addSeparator();
 		language.add(addLanguage);

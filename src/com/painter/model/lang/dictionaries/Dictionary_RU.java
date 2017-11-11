@@ -1,6 +1,7 @@
 package com.painter.model.lang.dictionaries;
 
 import java.util.ListResourceBundle;
+import java.util.Locale;
 import java.util.Map;
 import java.util.ResourceBundle;
 
@@ -10,7 +11,7 @@ import com.painter.model.lang.InterfaceLanguage;
 public class Dictionary_RU extends ListResourceBundle implements InterfaceBundle
 {
 	private boolean status;
-	private static final String resourceBundle = "com.painter.model.lang.dictionaries.Dictionary_RU";
+	public static final String resourceBundle = "com.painter.model.lang.dictionaries.Dictionary_RU";
 	private static final String name = "Русский";
 	
 	private static final Object[][] contents = 

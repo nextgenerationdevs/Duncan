@@ -4,6 +4,7 @@ import java.util.logging.Logger;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
+import com.painter.model.lang.LanguageFactory;
 import com.painter.view.PFrame;
 
 public class Main
@@ -29,7 +30,7 @@ public class Main
 		{
 			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
 		}
-
+		LanguageFactory.updateLanguages();
 		new PFrame();
 	}
 }

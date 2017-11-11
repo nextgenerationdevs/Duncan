@@ -23,7 +23,7 @@ public class Dictionary_UKR extends ListResourceBundle implements InterfaceBundl
 	{"actionWindow", "Вікно"}, {"actionNextTab", "Наступна таба"}, {"actionPrevTab", "Попередня таба"}, {"actionTab", "Таба"},
 	//MenuBar, Menu_Options:		
 	{"actionOptions", "Опції"}, {"actionPlugins", "Плагіни"}, {"actionSkins", "Скіни"}, {"actionCloud", "Хмара"}, {"actionLanguage", "Мова"},
-	{"actionAddLanguage", "Add language"},
+	{"actionAddLanguage", "Додати мову"},
 	//MenuBar, Menu_Help:		
 	{"actionHelp", "Допомога"}, {"actionHotKeys", "Горячі клавіши"}, {"actionAbout", "О програмі"}
 	};

@@ -44,9 +44,4 @@ public class PMenu extends JMenuBar
 			add((JMenu) obj[i]);
 		}
 	}
-	
-	public void refreshMenu()
-	{
-		
-	}
 }

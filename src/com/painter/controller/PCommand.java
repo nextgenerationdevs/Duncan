@@ -28,7 +28,6 @@ import com.painter.view.PMenu;
 public class PCommand
 {
 	Data data;
-	PMenu menuBar;
 	
 	public ActionNewFile			actionNewFile;
 	public ActionOpenFile			actionOpenFile;
@@ -52,7 +51,7 @@ public class PCommand
 	public ActionAddLanguage 		actionAddLanguage;
 	public ActionSetLanguage		actionSetLanguage;
 	
-	public PCommand(Data data, PFrame frame, PMenu menuBar)
+	public PCommand(Data data, PFrame frame)
 	{
 		this.data = data;
 		
@@ -75,8 +74,8 @@ public class PCommand
 		actionExit				= new ActionExit();
 		mousePaint				= new PaintListener(this, data);	
 		
-		actionAddLanguage		= new ActionAddLanguage(data, menuBar);
-		actionSetLanguage		= new ActionSetLanguage(data, menuBar);
+		actionAddLanguage		= new ActionAddLanguage(data);
+		actionSetLanguage		= new ActionSetLanguage(data, frame);
 	}
 
 	public Data getData()
