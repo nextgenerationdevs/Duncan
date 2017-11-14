@@ -1,5 +1,6 @@
 package com.painter.controller.listeners;
 
+import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.net.URLClassLoader;
@@ -90,8 +91,9 @@ public class PaintListener extends MouseAdapter
 	@Override
 	public void mouseMoved(MouseEvent e)
 	{
-		data.statusX = e.getX();
-		data.statusY = e.getY();
+		data.setStatusX(e.getX());
+		data.setStatusY(e.getY());
+		cmd.actionUpdateStatusBar.actionPerformed(new ActionEvent(this, 0, "updateXY"));
 	}
 
 	//	Добавление новой фигуры в рабочую область с установленными параметрами

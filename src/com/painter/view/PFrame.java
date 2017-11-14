@@ -1,14 +1,19 @@
 package com.painter.view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.util.Locale;
 
 import javax.swing.JFrame;
+import javax.swing.JTabbedPane;
 
 import com.painter.controller.PCommand;
 import com.painter.model.Data;
 import com.painter.model.Images;
+import com.painter.model.lang.InterfaceBundle;
+import com.painter.model.lang.LanguageFactory;
 
 public class PFrame extends JFrame
 {
@@ -38,10 +43,10 @@ public class PFrame extends JFrame
 		
 		add(new PToolBar(cmd), BorderLayout.NORTH);		
 		
-		statusBar = new PStatusBar("Welcome");
+		statusBar = new PStatusBar("Coordinates", "Path to file");
 		add(statusBar, BorderLayout.SOUTH);
 		
-		tpane = new PTabbedPane(cmd);
+		tpane = new PTabbedPane(cmd, this);
 		add(tpane, BorderLayout.CENTER);
 		
 		setResizable(true);

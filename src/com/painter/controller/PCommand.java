@@ -19,9 +19,9 @@ import com.painter.controller.listeners.ActionSaveFile;
 import com.painter.controller.listeners.ActionSaveFileToCloud;
 import com.painter.controller.listeners.ActionSetLanguage;
 import com.painter.controller.listeners.ActionSkins;
-import com.painter.controller.listeners.ActionStatusBar;
 import com.painter.controller.listeners.ActionTabbedPaneListener;
 import com.painter.controller.listeners.ActionThickness;
+import com.painter.controller.listeners.ActionUpdateStatusBar;
 import com.painter.controller.listeners.PaintListener;
 import com.painter.model.Data;
 import com.painter.view.PFrame;
@@ -40,7 +40,6 @@ public class PCommand
 //	public ActionCloseFile			actionCloseFile;
 	public ActionTabbedPaneListener	actionTabbedPane;
 	public ActionReloadWindows		actionReloadWindows;
-	public ActionStatusBar			actionStatusBar;
 	
 	public ActionColorChooser		actionColorChooser;
 	public ActionThickness			actionThickness;
@@ -54,6 +53,8 @@ public class PCommand
 	
 	public ActionAddLanguage 		actionAddLanguage;
 	public ActionSetLanguage		actionSetLanguage;
+	
+	public ActionUpdateStatusBar	actionUpdateStatusBar;
 	
 	public PCommand(Data data, PFrame frame)
 	{
@@ -69,8 +70,6 @@ public class PCommand
 		actionTabbedPane		= new ActionTabbedPaneListener(this);
 		actionReloadWindows		= new ActionReloadWindows();
 		
-		actionStatusBar			= new ActionStatusBar(frame.statusBar, data);
-		
 		actionColorChooser		= new ActionColorChooser(data);
 		actionThickness			= new ActionThickness(data);
 		actionDefaultSettings	= new ActionDefaultSettings();
@@ -83,6 +82,8 @@ public class PCommand
 		
 		actionAddLanguage		= new ActionAddLanguage(data);
 		actionSetLanguage		= new ActionSetLanguage(data, frame);
+		
+		actionUpdateStatusBar   = new ActionUpdateStatusBar(frame.statusBar, data);
 	}
 
 	public Data getData()

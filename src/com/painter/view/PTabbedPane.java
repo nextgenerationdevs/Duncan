@@ -1,6 +1,9 @@
 package com.painter.view;
 
 import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
@@ -12,11 +15,13 @@ import com.painter.controller.PPanel;
 
 public class PTabbedPane extends JTabbedPane
 {
-	PCommand cmd;
+	public PCommand cmd;
+	public PFrame frame;
 
-	public PTabbedPane(PCommand cmd) 
+	public PTabbedPane(PCommand cmd, PFrame frame) 
 	{
 		this.cmd = cmd;
+		this.frame = frame;
 		cmd.actionTabbedPane.setTPane(this);
 //		cmd.actionNewFile.setTPane(this);
 //		cmd.actionOpenFile.setTPane(this);
@@ -38,11 +43,13 @@ public class PTabbedPane extends JTabbedPane
 
 	public void addNewTab(String name)
 	{
-		PPanel pPanel = new PPanel(cmd);		
+		PPanel pPanel = new PPanel(cmd);
 		JScrollPane scrollPane = new JScrollPane(pPanel, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		addTab(name, scrollPane);
 		cmd.getData().names.add(name);						//		!!!Õ¿œ–ﬂÃ”ﬁ !!! »«Ã≈Õ»“‹!!!
-		setSelectedIndex(cmd.getData().names.size() - 1);
+		cmd.getData().selectedIndex = cmd.getData().names.size() - 1;
+		setSelectedIndex(cmd.getData().selectedIndex);
+		cmd.actionUpdateStatusBar.actionPerformed(new ActionEvent(this, 0, "newFile"));
 	}
 
 	public void nextTab()
