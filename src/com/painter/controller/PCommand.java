@@ -14,11 +14,13 @@ import com.painter.controller.listeners.ActionNewFile;
 import com.painter.controller.listeners.ActionOpenFile;
 import com.painter.controller.listeners.ActionOpenFileFromCloud;
 import com.painter.controller.listeners.ActionPlugins;
+import com.painter.controller.listeners.ActionReloadWindows;
 import com.painter.controller.listeners.ActionSaveFile;
 import com.painter.controller.listeners.ActionSaveFileToCloud;
 import com.painter.controller.listeners.ActionSetLanguage;
 import com.painter.controller.listeners.ActionSkins;
 import com.painter.controller.listeners.ActionStatusBar;
+import com.painter.controller.listeners.ActionTabbedPaneListener;
 import com.painter.controller.listeners.ActionThickness;
 import com.painter.controller.listeners.PaintListener;
 import com.painter.model.Data;
@@ -29,13 +31,15 @@ public class PCommand
 {
 	Data data;
 	
-	public ActionNewFile			actionNewFile;
-	public ActionOpenFile			actionOpenFile;
+//	public ActionNewFile			actionNewFile;
+//	public ActionOpenFile			actionOpenFile;
 	public ActionSaveFile			actionSaveFile;
-	public ActionLoadFile			actionLoadFile;
-	public ActionOpenFileFromCloud	actionOpenFileFromCloud;
+//	public ActionLoadFile			actionLoadFile;
+//	public ActionOpenFileFromCloud	actionOpenFileFromCloud;
 	public ActionSaveFileToCloud	actionSaveFileToCloud;
-	public ActionCloseFile			actionCloseFile;
+//	public ActionCloseFile			actionCloseFile;
+	public ActionTabbedPaneListener	actionTabbedPane;
+	public ActionReloadWindows		actionReloadWindows;
 	public ActionStatusBar			actionStatusBar;
 	
 	public ActionColorChooser		actionColorChooser;
@@ -55,13 +59,16 @@ public class PCommand
 	{
 		this.data = data;
 		
-		actionNewFile			= new ActionNewFile();
-		actionOpenFile			= new ActionOpenFile();
+//		actionNewFile			= new ActionNewFile();
+//		actionOpenFile			= new ActionOpenFile();
 		actionSaveFile			= new ActionSaveFile();
-		actionLoadFile			= new ActionLoadFile();
-		actionOpenFileFromCloud	= new ActionOpenFileFromCloud();
-		actionSaveFileToCloud	= new ActionSaveFileToCloud();
-		actionCloseFile			= new ActionCloseFile();
+//		actionLoadFile			= new ActionLoadFile();
+//		actionOpenFileFromCloud	= new ActionOpenFileFromCloud();
+//		actionSaveFileToCloud	= new ActionSaveFileToCloud();
+//		actionCloseFile			= new ActionCloseFile();
+		actionTabbedPane		= new ActionTabbedPaneListener(this);
+		actionReloadWindows		= new ActionReloadWindows();
+		
 		actionStatusBar			= new ActionStatusBar(frame.statusBar, data);
 		
 		actionColorChooser		= new ActionColorChooser(data);

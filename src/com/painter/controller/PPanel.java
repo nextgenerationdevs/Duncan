@@ -27,15 +27,16 @@ public class PPanel extends JPanel
 	
 	public void initialize()
 	{
-		for (Component comp : getComponents())
-		{
-			remove(comp);
-		}
-		
-		for (InterfaceFigure figure : figures)
-		{
-			add(figure.getPluginFigure());
-		}
+//		for (Component comp : getComponents())
+//		{
+//			remove(comp);
+//		}
+//		
+//		for (InterfaceFigure figure : figures)
+//		{
+//			add(figure.getPluginFigure());
+//		}
+		add(figures.get(figures.size() - 1).getPluginFigure());
 		revalidate();
 		repaint();
 	}

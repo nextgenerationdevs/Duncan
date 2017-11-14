@@ -5,7 +5,6 @@ import javax.swing.JButton;
 import javax.swing.JToolBar;
 
 import com.painter.controller.PCommand;
-import com.painter.model.Data;
 
 public class PToolBar extends JToolBar
 {
@@ -17,17 +16,24 @@ public class PToolBar extends JToolBar
 		
 		String[] arrayStr = {"newFile", "openFile", "saveFile", "openFileFromCloud", "saveFileToCloud", "closeFile", "aboutApp", 
 							 "defaultSettings", "actionUndo", "actionRedo", "prevTab", "nextTab"};
+		
+		String[] arrayAct = {"actionNew", "actionOpen", "actionSave", "actionOpenFromCloud", "actionSaveToCloud", "actionClose"};
+		
 		for (int i = 0; i < arrayStr.length; i++)
 		{
 			JButton button = new JButton(new ImageIcon("resources/img/toolbar/" + arrayStr[i] + "-icon.png"));
+			
+			if (i < arrayAct.length)
+				button.setActionCommand(arrayAct[i]);					//	ÊÎÑÒÛËÜ!!!
+			
 			switch (arrayStr[i]) 
 			{
-				case "newFile": button.addActionListener(cmd.actionNewFile); break;
-				case "openFile": button.addActionListener(cmd.actionOpenFile); break;
+				case "newFile": button.addActionListener(/*cmd.actionNewFile*/cmd.actionTabbedPane); break;
+				case "openFile": button.addActionListener(/*cmd.actionOpenFile*/cmd.actionTabbedPane); break;
 				case "saveFile": button.addActionListener(cmd.actionSaveFile); break;
-				case "openFileFromCloud": button.addActionListener(cmd.actionOpenFileFromCloud); break;
+				case "openFileFromCloud": button.addActionListener(/*cmd.actionOpenFileFromCloud*/cmd.actionTabbedPane); break;
 				case "saveFileToCloud": button.addActionListener(cmd.actionSaveFileToCloud); break;
-				case "closeFile": button.addActionListener(cmd.actionCloseFile); break;
+				case "closeFile": button.addActionListener(/*cmd.actionCloseFile*/cmd.actionTabbedPane); break;
 				case "aboutApp": button.addActionListener(cmd.actionAbout); break;
 				case "defaultSettings": button.addActionListener(cmd.actionDefaultSettings); break;
 				case "actionUndo": button.setEnabled(false);

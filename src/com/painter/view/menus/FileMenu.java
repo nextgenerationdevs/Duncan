@@ -30,21 +30,22 @@ public class FileMenu extends JMenu
 				"actionReload", "actionClose", "actionExit"};
 		for (int i = 0; i < arrayStr.length; i++) 
 		{
-			JMenuItem item = new JMenuItem(data.bundle.getString(arrayStr[i]));	
+			JMenuItem item = new JMenuItem(data.bundle.getString(arrayStr[i]));
+			item.setActionCommand(arrayStr[i]);
 			switch (arrayStr[i]) 
 			{
 				case "actionNew": item.setIcon(new ImageIcon("resources/img/menubar/newFile-icon.png"));
 								  item.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, ActionEvent.CTRL_MASK));
-								  item.addActionListener(cmd.actionNewFile); break;
+								  item.addActionListener(/*cmd.actionNewFile*/ cmd.actionTabbedPane); break;
 				case "actionOpen": item.setIcon(new ImageIcon("resources/img/menubar/openFile-icon.png"));
 				   				   item.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, ActionEvent.CTRL_MASK));
-				   				   item.addActionListener(cmd.actionOpenFile); break;
+				   				   item.addActionListener(/*cmd.actionOpenFile*/cmd.actionTabbedPane); break;
 				case "actionOpenFromCloud": item.setIcon(new ImageIcon("resources/img/menubar/openFileFromCloud-icon.png"));
 											item.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, ActionEvent.ALT_MASK | ActionEvent.SHIFT_MASK));
 											/*item.addActionListener(cmd.?);*/ break;
 				case "actionLoad": item.setIcon(new ImageIcon("resources/img/menubar/loadFile-icon.png"));
 								   item.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, ActionEvent.CTRL_MASK));
-								   item.addActionListener(cmd.actionLoadFile); break;
+								   item.addActionListener(/*cmd.actionLoadFile*/cmd.actionTabbedPane); break;
 				case "actionSave": item.setIcon(new ImageIcon("resources/img/menubar/saveFile-icon.png"));
 								   item.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.CTRL_MASK));
 								   item.addActionListener(cmd.actionSaveFile); break;
@@ -56,7 +57,7 @@ public class FileMenu extends JMenu
 				   					 /*item.addActionListener(cmd.?);*/ break;
 				case "actionClose": item.setIcon(new ImageIcon("resources/img/menubar/closeFile-icon.png"));
 									item.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_W, ActionEvent.CTRL_MASK));
-									item.addActionListener(cmd.actionCloseFile); break;
+									item.addActionListener(/*cmd.actionCloseFile*/cmd.actionTabbedPane); break;
 				case "actionExit": item.setIcon(new ImageIcon("resources/img/menubar/exitProgram-icon.png"));
 								   item.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F4, ActionEvent.ALT_MASK));
 								   item.addActionListener(cmd.actionExit); break;

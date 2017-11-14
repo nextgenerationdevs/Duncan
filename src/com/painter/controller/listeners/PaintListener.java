@@ -92,9 +92,7 @@ public class PaintListener extends MouseAdapter
 	{
 		data.statusX = e.getX();
 		data.statusY = e.getY();
-
 	}
-
 
 	//	Добавление новой фигуры в рабочую область с установленными параметрами
 	@Override

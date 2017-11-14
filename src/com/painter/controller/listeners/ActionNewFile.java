@@ -17,6 +17,6 @@ public class ActionNewFile implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e) 
 	{
-		tPane.addTab("Untitled");
+		tPane.addNewTab("Untitled");
 	}
 }

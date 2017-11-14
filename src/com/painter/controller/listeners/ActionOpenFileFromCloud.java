@@ -19,6 +19,6 @@ public class ActionOpenFileFromCloud implements ActionListener
 	public void actionPerformed(ActionEvent e) 
 	{
 		new EmptyDialog(getClass().toString());
-		tPane.addTab("Untittled");
+		tPane.addNewTab("Untittled");
 	}
 }

@@ -17,10 +17,11 @@ public class PTabbedPane extends JTabbedPane
 	public PTabbedPane(PCommand cmd) 
 	{
 		this.cmd = cmd;
-		cmd.actionNewFile.setTPane(this);
-		cmd.actionOpenFile.setTPane(this);
-		cmd.actionCloseFile.setTPane(this);
-		cmd.actionOpenFileFromCloud.setTPane(this);
+		cmd.actionTabbedPane.setTPane(this);
+//		cmd.actionNewFile.setTPane(this);
+//		cmd.actionOpenFile.setTPane(this);
+//		cmd.actionCloseFile.setTPane(this);
+//		cmd.actionOpenFileFromCloud.setTPane(this);
 
 		addChangeListener(new ChangeListener()
 		{
@@ -35,7 +36,7 @@ public class PTabbedPane extends JTabbedPane
 		});
 	}
 
-	public void addTab(String name)
+	public void addNewTab(String name)
 	{
 		PPanel pPanel = new PPanel(cmd);		
 		JScrollPane scrollPane = new JScrollPane(pPanel, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
@@ -50,7 +51,7 @@ public class PTabbedPane extends JTabbedPane
 
 		if (index == cmd.getData().names.size() - 1)
 			return;
-		setSelectedIndex(index++);
+		setSelectedIndex(++index);
 	}
 
 	public void prevTab()
@@ -59,7 +60,7 @@ public class PTabbedPane extends JTabbedPane
 
 		if (index == 0)
 			return;
-		setSelectedIndex(index--);
+		setSelectedIndex(--index);
 	}
 	
 	public void selectTab(String name)
