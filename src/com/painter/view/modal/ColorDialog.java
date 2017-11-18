@@ -17,7 +17,7 @@ public class ColorDialog extends JDialog
 		this.data = data;
 			
 		Color color = colorChooser.showDialog(null, "Color", Color.BLUE);
-		//data.setColor(color);
+//		data.color = color.getRGB();
 		add(colorChooser);
 		
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);	

@@ -21,6 +21,6 @@ public class ActionAddLanguage implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e) 
 	{
-		new AddLanguageDialog();
+		new AddLanguageDialog(data);
 	}
 }

@@ -19,8 +19,6 @@ public class PPanel extends JPanel
 	{
 		setLayout(null);
 		this.cmd = cmd;
-		addMouseListener(cmd.mousePaint);
-		addMouseMotionListener(cmd.mousePaint);
 		subscribeListener();
 		setBackground(Color.WHITE);
 	}
@@ -43,6 +41,6 @@ public class PPanel extends JPanel
 	
 	public void subscribeListener()
 	{
-		cmd.mousePaint.setPPanel(this);
+		cmd.dropTargetListener.setPPanel(this);
 	}
 }

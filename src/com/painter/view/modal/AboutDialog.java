@@ -18,8 +18,6 @@ import com.painter.model.Data;
 
 public class AboutDialog extends JDialog implements ActionListener
 {
-	Data data;
-	
 	public AboutDialog() 
 	{
 		setTitle("AUTHORS");
@@ -31,11 +29,8 @@ public class AboutDialog extends JDialog implements ActionListener
 		int y = pp.getToolkit().getScreenSize().height / 2 - height;
 		setLocation(x, y);
 		setSize(width, height);
-		setModal(true);
-		setResizable(false);
-
+		
 		JPanel panelForm = new JPanel(new GridBagLayout());
-		add(panelForm);
 		GridBagConstraints c = new GridBagConstraints();
 		c.gridx = 0;
 		c.gridy = 0;
@@ -48,15 +43,11 @@ public class AboutDialog extends JDialog implements ActionListener
 			JLabel label = new JLabel(arrayStr[i]);
 			switch (arrayStr[i]) 
 			{
-				case "Copyright by:" : label.setFont(new Font("Arial", Font.BOLD, 16)); break;
-				case "Zima Maksim" : label.setBackground(Color.RED); 
-					label.setFont(new Font("Arial", Font.ITALIC, 14)); break;
-				case "Chmul Dmitriy" : label.setBackground(Color.RED);
-					label.setFont(new Font("Arial", Font.ITALIC, 14)); break;
-				case "Kosyak Maksim" : label.setBackground(Color.RED);
-					label.setFont(new Font("Arial", Font.ITALIC, 14)); break;
-				case "Medvedev Dmitriy" : label.setBackground(Color.RED);
-					label.setFont(new Font("Arial", Font.ITALIC, 14)); break;
+				case "Copyright by:" :		label.setFont(new Font("Arial", Font.BOLD, 16)); 	break;
+				case "Zima Maksim" : 		label.setFont(new Font("Arial", Font.ITALIC, 14)); 	break;
+				case "Chmul Dmitriy" : 		label.setFont(new Font("Arial", Font.ITALIC, 14)); 	break;
+				case "Kosyak Maksim" : 		label.setFont(new Font("Arial", Font.ITALIC, 14)); 	break;
+				case "Medvedev Dmitriy" : 	label.setFont(new Font("Arial", Font.ITALIC, 14)); 	break;
 			}		
 			panelForm.add(label, c);
 			c.gridy ++;
@@ -68,6 +59,9 @@ public class AboutDialog extends JDialog implements ActionListener
 		
 		add(panelForm);
 		pack();	
+		
+		setResizable(false);
+		setModal(true);
 		setVisible(true);
 	}
 

@@ -28,7 +28,7 @@ public class PToolBar extends JToolBar
 			
 			switch (arrayStr[i]) 
 			{
-				case "newFile": button.addActionListener(/*cmd.actionNewFile*/cmd.actionTabbedPane); break;
+				case "newFile": button.addActionListener(/*cmd.actionNewFilecmd.actionTabbedPane*/cmd.actionNewFileStart); break;
 				case "openFile": button.addActionListener(/*cmd.actionOpenFile*/cmd.actionTabbedPane); break;
 				case "saveFile": button.addActionListener(cmd.actionSaveFile); break;
 				case "openFileFromCloud": button.addActionListener(/*cmd.actionOpenFileFromCloud*/cmd.actionTabbedPane); break;

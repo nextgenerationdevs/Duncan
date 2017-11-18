@@ -1,6 +1,7 @@
 package com.painter.view.modal;
 
 import java.awt.BorderLayout;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -13,10 +14,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.JTableHeader;
 
-import com.painter.controller.PPanel;
-import com.painter.model.Data;
-import com.painter.view.PFrame;
 import com.painter.view.modal.hot_keys_model.HotKeysImpl;
 import com.painter.view.modal.hot_keys_model.HotKeysTableModel;
 
@@ -27,7 +26,7 @@ public class HotKeysDialog extends JDialog implements ActionListener
 		setTitle("Hot keys");
 		
 		HotKeysImpl hotKeysImpl = new HotKeysImpl();
-		JTable mainTable = new JTable(new HotKeysTableModel(hotKeysImpl));   
+		JTable mainTable = new JTable(new HotKeysTableModel(hotKeysImpl));  
         mainTable.setRowHeight(20);
 		
 		JPanel pp = new JPanel();
@@ -37,11 +36,13 @@ public class HotKeysDialog extends JDialog implements ActionListener
 		int y = pp.getToolkit().getScreenSize().height / 2 - height / 2;
 		setLocation(x, y);
 		setSize(width, height);
-		setModal(true);
-		setResizable(false);
         
+		JTableHeader theader = mainTable.getTableHeader();
+		((DefaultTableCellRenderer) theader.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
+		theader.setFont(new Font("Arial", Font.BOLD, 14));
+		
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER); 
         mainTable.getColumnModel().getColumn(1).setCellRenderer(centerRenderer);
         
         Box contents = new Box(BoxLayout.Y_AXIS);
@@ -49,9 +50,11 @@ public class HotKeysDialog extends JDialog implements ActionListener
         getContentPane().add(contents);
         
 		JButton button = new JButton("Cancel");
-		button.addActionListener(this); 
+		button.addActionListener(this);
 		add(button, BorderLayout.SOUTH);
 		
+		setResizable(false);
+		setModal(true);
 		setVisible(true);
 	}
 	

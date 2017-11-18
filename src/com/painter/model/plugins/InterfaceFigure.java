@@ -1,12 +1,12 @@
 package com.painter.model.plugins;
 
-import java.awt.Graphics2D;
+import java.awt.datatransfer.Transferable;
+import java.awt.dnd.DragGestureListener;
 
 import javax.swing.JPanel;
-
 import com.painter.model.Type;
 
-public interface InterfaceFigure
+public interface InterfaceFigure extends DragGestureListener, Transferable
 {
 	public InterfaceFigure getInstance(InterfaceFigure figure);
 	/**
@@ -53,4 +53,6 @@ public interface InterfaceFigure
 	 * @return выбрана текущая фигура
 	 */
 	public boolean isSelected();
+	
+	public void setDragSource(JPanel panel);
 }

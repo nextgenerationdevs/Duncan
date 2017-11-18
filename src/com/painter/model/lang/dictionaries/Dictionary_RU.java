@@ -6,7 +6,6 @@ import java.util.Map;
 import java.util.ResourceBundle;
 
 import com.painter.model.lang.InterfaceBundle;
-import com.painter.model.lang.InterfaceLanguage;
 
 public class Dictionary_RU extends ListResourceBundle implements InterfaceBundle
 {

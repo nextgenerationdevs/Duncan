@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import com.painter.model.lang.InterfaceBundle;
-import com.painter.model.lang.InterfaceLanguage;
 import com.painter.model.lang.LanguageFactory;
 import com.painter.model.plugins.InterfaceFigure;
 import com.painter.model.plugins.PluginsList;

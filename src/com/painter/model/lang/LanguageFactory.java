@@ -24,13 +24,12 @@ public class LanguageFactory
 				return language.returnBundle();
 			}	
 		}
-		System.out.println("Default язык выбран ");
+		System.out.println("Default язык выбран");
 		return new Dictionary_EN().returnBundle();
 	}
 	
 	public static void updateLanguages()
 	{
-
 		addToBundles(new Dictionary_EN());
 		addToBundles(new Dictionary_RU());
 		addToBundles(new Dictionary_UKR());

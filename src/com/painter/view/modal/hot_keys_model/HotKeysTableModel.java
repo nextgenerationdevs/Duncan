@@ -31,7 +31,7 @@ public class HotKeysTableModel extends AbstractTableModel
     @Override
 	public String getColumnName(int column) 
 	{
-		String[] name = {"Action","Hot_Key"};
+		String[] name = {"Action","Hot_Keys"};
 		return name[column];
 	}
     
