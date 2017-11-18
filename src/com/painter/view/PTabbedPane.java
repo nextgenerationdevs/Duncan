@@ -23,10 +23,6 @@ public class PTabbedPane extends JTabbedPane
 		this.cmd = cmd;
 		this.frame = frame;
 		cmd.actionTabbedPane.setTPane(this);
-//		cmd.actionNewFile.setTPane(this);
-//		cmd.actionOpenFile.setTPane(this);
-//		cmd.actionCloseFile.setTPane(this);
-//		cmd.actionOpenFileFromCloud.setTPane(this);
 
 		addChangeListener(new ChangeListener()
 		{
@@ -56,7 +52,7 @@ public class PTabbedPane extends JTabbedPane
 	{
 		int index = getSelectedIndex();
 
-		if (index == cmd.getData().names.size() - 1)
+		if (index >= cmd.getData().names.size() - 1)
 			return;
 		setSelectedIndex(++index);
 	}
@@ -65,7 +61,7 @@ public class PTabbedPane extends JTabbedPane
 	{
 		int index = getSelectedIndex();
 
-		if (index == 0)
+		if (index <= 0)
 			return;
 		setSelectedIndex(--index);
 	}
@@ -96,6 +92,8 @@ public class PTabbedPane extends JTabbedPane
 
 	public void closeTab()
 	{
+		if (getSelectedIndex() < 0)
+			return;
 		cmd.getData().names.remove(getSelectedIndex());
 		removeTabAt(getSelectedIndex());
 	}	

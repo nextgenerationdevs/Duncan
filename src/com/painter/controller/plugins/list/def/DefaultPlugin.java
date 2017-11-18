@@ -1,6 +1,14 @@
 package com.painter.controller.plugins.list.def;
 
 import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.UnsupportedFlavorException;
+import java.awt.dnd.DnDConstants;
+import java.awt.dnd.DragGestureEvent;
+import java.awt.dnd.DragSource;
+import java.io.IOException;
+
 import javax.swing.JPanel;
 
 import com.painter.model.Type;
@@ -20,6 +28,8 @@ public class DefaultPlugin implements InterfaceFigure
 	
 	private FigurePanel thisFigure;
 	private JPanel thisProperties;
+	private DataFlavor df = new DataFlavor(DefaultPlugin.class, "DefaultPlugin");
+	private DataFlavor[] supportedFlavors = {df};
 	
 	public DefaultPlugin(int x, int y)
 	{
@@ -117,6 +127,46 @@ public class DefaultPlugin implements InterfaceFigure
 	public InterfaceFigure getInstance(InterfaceFigure figure)
 	{
 		return new DefaultPlugin(((DefaultPlugin)figure).getX(), ((DefaultPlugin)figure).getY());		
+	}
+
+	@Override
+	public void dragGestureRecognized(DragGestureEvent dge)
+	{
+		Cursor cursor = null;
+		JPanel panel = (JPanel) dge.getComponent();
+		if (dge.getDragAction() == DnDConstants.ACTION_COPY)
+		{
+			cursor = DragSource.DefaultCopyDrop;
+		}
+		dge.startDrag(cursor, new DefaultPlugin(dge.getDragOrigin().x, dge.getDragOrigin().y));
+		
+	}
+
+	@Override
+	public Object getTransferData(DataFlavor df) throws UnsupportedFlavorException, IOException
+	{
+		if (df.equals(this.df))
+			return new DefaultPlugin(x, y);
+		else
+			throw new UnsupportedFlavorException(df);
+	}
+
+	@Override
+	public DataFlavor[] getTransferDataFlavors()
+	{
+		return supportedFlavors;
+	}
+
+	@Override
+	public boolean isDataFlavorSupported(DataFlavor df)
+	{
+		return true;
+	}
+
+	@Override
+	public void setDragSource(JPanel panel)
+	{
+		new DragSource().createDefaultDragGestureRecognizer(panel, DnDConstants.ACTION_COPY, this);
 	}
 
 }
