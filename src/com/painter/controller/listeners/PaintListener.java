@@ -116,13 +116,13 @@ public class PaintListener extends MouseAdapter
 
 	private void addFigure(MouseEvent e)
 	{
-		data.statusX = e.getX();
-		data.statusY = e.getY();
-		InterfaceFigure figure = data.selectedFigure.getInstance(data.selectedFigure);
-		figure.setMainProperties(data.type, data.color, data.thickness);
-		figure.move(e.getX(), e.getY());
-		panel.figures.add(figure);
-		panel.initialize();
+//		data.statusX = e.getX();
+//		data.statusY = e.getY();
+//		InterfaceFigure figure = data.selectedFigure.getInstance(data.selectedFigure);
+//		figure.setMainProperties(data.type, data.color, data.thickness);
+//		figure.move(e.getX(), e.getY());
+//		panel.figures.add(figure);
+//		panel.initialize();
 	}
 
 	private void notifyContextMenu(MouseEvent e)

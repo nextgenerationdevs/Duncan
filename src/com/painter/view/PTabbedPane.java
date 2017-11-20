@@ -34,7 +34,14 @@ public class PTabbedPane extends JTabbedPane
 			{
 				PPanel panel = getCurrentPanel();
 				if (panel != null)
+				{
 					panel.subscribeListener();
+					if (cmd.getData().names.size() > 0)
+					{
+						cmd.getData().selectedIndex = getSelectedIndex();
+						cmd.actionUpdateStatusBar.actionPerformed(new ActionEvent(this, 0, "updateFile"));
+					}
+				}
 			}
 		});
 	}
@@ -62,7 +69,6 @@ public class PTabbedPane extends JTabbedPane
 		if (index >= cmd.getData().names.size() - 1)
 			return;
 		setSelectedIndex(++index);
-		cmd.actionUpdateStatusBar.actionPerformed(new ActionEvent(this, 0, "updateFile"));
 	}
 
 	public void prevTab()
@@ -72,9 +78,8 @@ public class PTabbedPane extends JTabbedPane
 		if (index <= 0)
 			return;
 		setSelectedIndex(--index);
-		cmd.actionUpdateStatusBar.actionPerformed(new ActionEvent(this, 0, "updateFile"));
 	}
-	
+
 	public void selectTab(String name)
 	{
 		for (int i = 0; i < cmd.getData().names.size(); i++)
@@ -84,6 +89,8 @@ public class PTabbedPane extends JTabbedPane
 				break;
 			}
 	}
+
+
 
 	public PPanel getCurrentPanel()
 	{
