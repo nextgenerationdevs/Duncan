@@ -33,7 +33,7 @@ public class ActionUpdateStatusBar implements ActionListener
 		{
 			statusBar.setStatus("X: " + data.getStatusX() + " " + "Y: " + data.getStatusY());
 		}
-		else if (str.equals("newFile")) 
+		else if (str.equals("updateFile")) 
 		{
 			statusBar.setFile("path: " + data.names.get(data.selectedIndex) + ".json");
 		}

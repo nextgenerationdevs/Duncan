@@ -1,10 +1,10 @@
 package com.painter.view;
 
+import java.awt.Button;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
 
+import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
@@ -17,11 +17,13 @@ public class PTabbedPane extends JTabbedPane
 {
 	public PCommand cmd;
 	public PFrame frame;
+	public PToolBar toolBar;
 
-	public PTabbedPane(PCommand cmd, PFrame frame) 
+	public PTabbedPane(PCommand cmd, PFrame frame, PToolBar toolBar) 
 	{
 		this.cmd = cmd;
 		this.frame = frame;
+		this.toolBar = toolBar;
 		cmd.actionTabbedPane.setTPane(this);
 
 		addChangeListener(new ChangeListener()
@@ -45,7 +47,12 @@ public class PTabbedPane extends JTabbedPane
 		cmd.getData().names.add(name);						//		!!!ÍÀÏÐßÌÓÞ !!! ÈÇÌÅÍÈÒÜ!!!
 		cmd.getData().selectedIndex = cmd.getData().names.size() - 1;
 		setSelectedIndex(cmd.getData().selectedIndex);
-		cmd.actionUpdateStatusBar.actionPerformed(new ActionEvent(this, 0, "newFile"));
+		if (cmd.getData().names.size() > 1)
+		{
+			toolBar.buttonNextTab.setEnabled(true);
+			toolBar.buttonPrevTab.setEnabled(true);
+		}
+		cmd.actionUpdateStatusBar.actionPerformed(new ActionEvent(this, 0, "updateFile"));
 	}
 
 	public void nextTab()
@@ -55,6 +62,7 @@ public class PTabbedPane extends JTabbedPane
 		if (index >= cmd.getData().names.size() - 1)
 			return;
 		setSelectedIndex(++index);
+		cmd.actionUpdateStatusBar.actionPerformed(new ActionEvent(this, 0, "updateFile"));
 	}
 
 	public void prevTab()
@@ -64,6 +72,7 @@ public class PTabbedPane extends JTabbedPane
 		if (index <= 0)
 			return;
 		setSelectedIndex(--index);
+		cmd.actionUpdateStatusBar.actionPerformed(new ActionEvent(this, 0, "updateFile"));
 	}
 	
 	public void selectTab(String name)
@@ -94,6 +103,11 @@ public class PTabbedPane extends JTabbedPane
 	{
 		if (getSelectedIndex() < 0)
 			return;
+		if (getSelectedIndex() < 2)
+		{
+			toolBar.buttonNextTab.setEnabled(false);
+			toolBar.buttonPrevTab.setEnabled(false);
+		}
 		cmd.getData().names.remove(getSelectedIndex());
 		removeTabAt(getSelectedIndex());
 	}	

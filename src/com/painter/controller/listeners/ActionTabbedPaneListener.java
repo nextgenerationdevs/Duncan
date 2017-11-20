@@ -4,23 +4,28 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import com.painter.controller.EmptyDialog;
 import com.painter.controller.PCommand;
 import com.painter.controller.formats.ImportExportImpl;
 import com.painter.controller.formats.SaveOpenLoad_JSON;
+import com.painter.model.Data;
 import com.painter.view.PTabbedPane;
+import com.painter.view.modal.CreateNewFileDialog;
 
 public class ActionTabbedPaneListener implements ActionListener
 {
 	PTabbedPane tPane;
 	PCommand cmd;
+	Data data;
 	int nameCounter;
 	
-	public ActionTabbedPaneListener(PCommand cmd)
+	public ActionTabbedPaneListener(PCommand cmd, Data data)
 	{
 		this.cmd = cmd;
+		this.data = data;
 	}
 	
 	public void setTPane(PTabbedPane tPane)
@@ -82,6 +87,11 @@ public class ActionTabbedPaneListener implements ActionListener
 
 	private void closeTab()
 	{
+		String str = cmd.getData().names.get(tPane.getSelectedIndex());
+		if(str.compareTo("Untitled" + ""+nameCounter) == 0)
+		{
+			nameCounter--;
+		}
 		tPane.closeTab();
 		addWindow();
 	}
@@ -108,7 +118,7 @@ public class ActionTabbedPaneListener implements ActionListener
 	private void openFromCloudTab()
 	{
 		new EmptyDialog(getClass().toString());
-		tPane.addNewTab("Untittled");
+		tPane.addNewTab("Untitled");
 		addWindow();
 	}
 
@@ -142,13 +152,34 @@ public class ActionTabbedPaneListener implements ActionListener
 
 	private void createTab()
 	{
-		tPane.addNewTab("Untitled" + ++nameCounter);
-		addWindow();
+		CreateNewFileDialog createNewFileDialog = new CreateNewFileDialog();
+		String fileName = createNewFileDialog.returnFileName();
+		
+		if (createNewFileDialog.status_WINDOW == 0)
+		{
+			if (fileName.equals("Untitled"))
+			{
+				tPane.addNewTab(fileName + ++nameCounter);
+			}
+			else
+			{
+				for (int i = 0; i < cmd.getData().names.size(); i++)
+				{
+					if ((cmd.getData().names.get(i)).equals(fileName))
+					{
+						String title = data.bundle.getString("warning_title");
+						String message = data.bundle.getString("nameOfTabbedPaneExist");
+						JOptionPane.showMessageDialog(null, message, title, JOptionPane.ERROR_MESSAGE); return;
+					}
+				}
+				tPane.addNewTab(fileName); 
+			}
+			addWindow();			
+		}			
 	}
 	
 	private void addWindow()
 	{
 		cmd.actionReloadWindows.actionPerformed(new ActionEvent(this, 0, "updateWindowMenu"));		
 	}
-
 }

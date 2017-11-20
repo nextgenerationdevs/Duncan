@@ -15,6 +15,7 @@ public class PFrame extends JFrame
 	public PTabbedPane tpane;
 	public PStatusBar statusBar;
 	public PSidePanel sidePanel;
+	public PToolBar toolBar;
 	
 	PCommand cmd;
 	Data data;
@@ -37,7 +38,8 @@ public class PFrame extends JFrame
 		menuBar = new PMenu(data, cmd);			
 		setJMenuBar(menuBar);
 		
-		add(new PToolBar(cmd), BorderLayout.NORTH);		
+		toolBar = new PToolBar(cmd);
+		add(toolBar, BorderLayout.NORTH);		
 		
 		statusBar = new PStatusBar("Coordinates", "Path to file");
 		add(statusBar, BorderLayout.SOUTH);
@@ -45,7 +47,7 @@ public class PFrame extends JFrame
 		sidePanel = new PSidePanel(cmd);
 		add(sidePanel);
 		
-		tpane = new PTabbedPane(cmd, this);
+		tpane = new PTabbedPane(cmd, this, toolBar);
 		add(tpane, BorderLayout.CENTER);
 		
 		PSidePanel sidePanel = new PSidePanel(cmd);

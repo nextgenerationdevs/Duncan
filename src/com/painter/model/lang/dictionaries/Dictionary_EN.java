@@ -25,7 +25,10 @@ public class Dictionary_EN extends ListResourceBundle implements InterfaceBundle
 	{"actionOptions", "Options"}, {"actionPlugins", "Plugins"}, {"actionSkins", "Skins"}, {"actionCloud", "Cloud"}, {"actionLanguage", "Language"},
 	{"actionAddLanguage", "Add language"},
 	//MenuBar, Menu_Help:		
-	{"actionHelp", "Help"}, {"actionHotKeys", "Hot Keys"}, {"actionAbout", "About"}
+	{"actionHelp", "Help"}, {"actionHotKeys", "Hot Keys"}, {"actionAbout", "About"},
+	//Warning messages		
+	{"warning_title", "Warning Message"},
+	{"nameOfTabbedPaneExist", "A tab with this name already exists!\nPlease change the tab name!"}
 	};
 	
 	@Override

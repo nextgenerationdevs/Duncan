@@ -2,6 +2,10 @@ package com.painter.controller;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -10,7 +14,7 @@ import javax.swing.JPanel;
 
 import com.painter.model.plugins.InterfaceFigure;
 
-public class PPanel extends JPanel
+public class PPanel extends JPanel implements MouseMotionListener
 {
 	PCommand cmd;
 	public List<InterfaceFigure> figures = Collections.synchronizedList(new ArrayList<>());
@@ -42,5 +46,17 @@ public class PPanel extends JPanel
 	public void subscribeListener()
 	{
 		cmd.dropTargetListener.setPPanel(this);
+	}
+
+	@Override
+	public void mouseDragged(MouseEvent e) {}
+
+	@Override
+	public void mouseMoved(MouseEvent e)
+	{
+		cmd.getData().setStatusX(e.getX());
+		cmd.getData().setStatusY(e.getY());
+		
+		cmd.actionUpdateStatusBar.actionPerformed(new ActionEvent(this, 0, "updateXY"));
 	}
 }

@@ -2,8 +2,6 @@ package com.painter.view.modal;
 
 import java.awt.BorderLayout;
 import java.awt.Checkbox;
-import java.awt.Color;
-import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -19,15 +17,23 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import com.painter.model.Data;
-
-public class CreateNewFileDialog extends JDialog implements ActionListener
+public class CreateNewFileDialog extends JDialog
 {
+	public static String fileName = "";
+	public static int status_WINDOW = 1;
+	
+	JLabel labelFileName;
+	JTextField fieldFileName;
+	
+	Checkbox defaultLocation;
+	
 	JLabel labelLocation;
 	JTextField fieldLocation;
 	JButton btnBrowse;
-	JTextField txtPath;
 	
+	JButton btnOk;
+	JButton btnCancel;
+
 	public CreateNewFileDialog() 
 	{
 		setTitle("CREATING NEW TAB...");
@@ -47,19 +53,19 @@ public class CreateNewFileDialog extends JDialog implements ActionListener
 		c.anchor = GridBagConstraints.LINE_START;
 		c.insets = new Insets(10, 10, 10, 10);
 		
-		JLabel labelFileName = new JLabel("File Name: ");
+		labelFileName = new JLabel("File Name: ");
 		panelForm.add(labelFileName, c);
 		
 		c.gridx = 1;
 		c.gridwidth = 2;
-		JTextField fieldFileName = new JTextField("Untitled", 15);
+		fieldFileName = new JTextField("Untitled", 15);
 		panelForm.add(fieldFileName, c);
 		
 		c.gridy ++;
 
 		c.gridx = 0;
 		c.gridwidth = 3;
-		Checkbox defaultLocation = new Checkbox("Use default location", true);
+		defaultLocation = new Checkbox("Use default location", true);
 		defaultLocation.addItemListener(new ItemListener() 
 		{
 			public void itemStateChanged(ItemEvent e) 
@@ -111,7 +117,7 @@ public class CreateNewFileDialog extends JDialog implements ActionListener
 				int rVal = fileChooser.showOpenDialog(null);
 				if (rVal == JFileChooser.APPROVE_OPTION) 
 				{
-					txtPath.setText(fileChooser.getSelectedFile().toString());
+					fieldFileName.setText(fileChooser.getSelectedFile().toString());
 				}
 			}
 		});
@@ -120,14 +126,29 @@ public class CreateNewFileDialog extends JDialog implements ActionListener
 		
 		c.gridx = 1;
 		c.anchor = GridBagConstraints.LINE_END;
-		JButton btn_ok = new JButton("OK");
-		btn_ok.addActionListener(new ActionCreateNewFile());
-		panelForm.add(btn_ok, c);
+		btnOk = new JButton("OK");
+		btnOk.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
+				setStatusWindow(0);
+				fileName = fieldFileName.getText();
+				dispose();
+			}
+		});
+		panelForm.add(btnOk, c);
 		
 		c.gridx = 2;
-		JButton btn_cancel = new JButton("Cancel");
-		btn_cancel.addActionListener(this);
-		panelForm.add(btn_cancel, c);
+		JButton btnCancel = new JButton("Cancel");
+		btnCancel.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
+				setStatusWindow(1);
+				dispose();
+			}
+		});
+		panelForm.add(btnCancel, c);
 		
 		add(panelForm, BorderLayout.CENTER);
 		pack();
@@ -136,20 +157,19 @@ public class CreateNewFileDialog extends JDialog implements ActionListener
 		setModal(true);
 		setVisible(true);
 	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) 
+	
+	public static int returnStatusWindow()
 	{
-		dispose();
+		return status_WINDOW;
 	}
 	
-	class ActionCreateNewFile implements ActionListener
+	public static void setStatusWindow(int value)
 	{
-		@Override
-		public void actionPerformed(ActionEvent e)
-		{
-			// TODO Auto-generated method stub
-			
-		}
+		status_WINDOW = value;
+	}
+	
+	public static String returnFileName()
+	{
+		return fileName;
 	}
 }

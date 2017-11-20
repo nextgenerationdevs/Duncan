@@ -9,9 +9,6 @@ import com.painter.controller.listeners.ActionColorChooser;
 import com.painter.controller.listeners.ActionDefaultSettings;
 import com.painter.controller.listeners.ActionExit;
 import com.painter.controller.listeners.ActionHotKeys;
-import com.painter.controller.listeners.ActionLoadFile;
-import com.painter.controller.listeners.ActionNewFile;
-import com.painter.controller.listeners.ActionOpenFile;
 import com.painter.controller.listeners.ActionOpenFileFromCloud;
 import com.painter.controller.listeners.ActionPlugins;
 import com.painter.controller.listeners.ActionReloadWindows;
@@ -32,13 +29,9 @@ public class PCommand
 {
 	Data data;
 	
-//	public ActionNewFile			actionNewFile;
-//	public ActionOpenFile			actionOpenFile;
 	public ActionSaveFile			actionSaveFile;
-//	public ActionLoadFile			actionLoadFile;
-//	public ActionOpenFileFromCloud	actionOpenFileFromCloud;
+	public ActionOpenFileFromCloud	actionOpenFileFromCloud;
 	public ActionSaveFileToCloud	actionSaveFileToCloud;
-//	public ActionCloseFile			actionCloseFile;
 	public ActionTabbedPaneListener	actionTabbedPane;
 	public ActionReloadWindows		actionReloadWindows;
 	
@@ -62,14 +55,10 @@ public class PCommand
 	{
 		this.data = data;
 		
-//		actionNewFile			= new ActionNewFile();
-//		actionOpenFile			= new ActionOpenFile();
 		actionSaveFile			= new ActionSaveFile();
-//		actionLoadFile			= new ActionLoadFile();
-//		actionOpenFileFromCloud	= new ActionOpenFileFromCloud();
-//		actionSaveFileToCloud	= new ActionSaveFileToCloud();
-//		actionCloseFile			= new ActionCloseFile();
-		actionTabbedPane		= new ActionTabbedPaneListener(this);
+		actionOpenFileFromCloud	= new ActionOpenFileFromCloud();
+		actionSaveFileToCloud	= new ActionSaveFileToCloud();
+		actionTabbedPane		= new ActionTabbedPaneListener(this, data);
 		actionReloadWindows		= new ActionReloadWindows();
 		
 		actionColorChooser		= new ActionColorChooser(data);

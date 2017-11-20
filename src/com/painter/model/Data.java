@@ -43,5 +43,5 @@ public class Data
 	public int selectedIndex = 0;
 	
 //	Tabs
-	public List<String> names = new ArrayList<>();
+	public List<String> names = new ArrayList<String>();
 }
