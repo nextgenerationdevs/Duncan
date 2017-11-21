@@ -5,6 +5,7 @@ import java.awt.Checkbox;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -16,16 +17,18 @@ import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class CreateNewFileDialog extends JDialog
 {
+	private final static String defaultLocation = "C:/Profram Files/Painter/projects";
 	public static String fileName = "";
 	public static int status_WINDOW = 1;
 	
 	JLabel labelFileName;
 	JTextField fieldFileName;
 	
-	Checkbox defaultLocation;
+	Checkbox checkDefaultLocation;
 	
 	JLabel labelLocation;
 	JTextField fieldLocation;
@@ -38,11 +41,10 @@ public class CreateNewFileDialog extends JDialog
 	{
 		setTitle("CREATING NEW TAB...");
 		
-		JPanel pp = new JPanel();
 		int width = 500;
 		int height = 400;	
-		int x = pp.getToolkit().getScreenSize().width / 2 - width / 4;
-		int y = pp.getToolkit().getScreenSize().height / 2 - height;
+		int x = (Toolkit.getDefaultToolkit().getScreenSize().width - width) / 2;
+		int y = (Toolkit.getDefaultToolkit().getScreenSize().height - height) / 2;
 		setLocation(x, y);
 		setSize(width, height);
 		
@@ -51,22 +53,24 @@ public class CreateNewFileDialog extends JDialog
 		c.gridx = 0;
 		c.gridy = 0;
 		c.anchor = GridBagConstraints.LINE_START;
-		c.insets = new Insets(10, 10, 10, 10);
+		c.insets = new Insets(5, 5, 5, 2);
 		
 		labelFileName = new JLabel("File Name: ");
 		panelForm.add(labelFileName, c);
 		
 		c.gridx = 1;
 		c.gridwidth = 2;
-		fieldFileName = new JTextField("Untitled", 15);
+		c.insets = new Insets(5, 0, 5, 0);
+		fieldFileName = new JTextField("Untitled", 27);
 		panelForm.add(fieldFileName, c);
 		
 		c.gridy ++;
 
 		c.gridx = 0;
 		c.gridwidth = 3;
-		defaultLocation = new Checkbox("Use default location", true);
-		defaultLocation.addItemListener(new ItemListener() 
+		c.insets = new Insets(5, 5, 5, 0);
+		checkDefaultLocation = new Checkbox("Use default location", true);
+		checkDefaultLocation.addItemListener(new ItemListener() 
 		{
 			public void itemStateChanged(ItemEvent e) 
 			{
@@ -84,40 +88,36 @@ public class CreateNewFileDialog extends JDialog
 				}
 			}
 		});
-		panelForm.add(defaultLocation, c);
+		panelForm.add(checkDefaultLocation, c);
 		c.gridy ++;
 		
 		c.gridwidth = 1;
+		c.insets = new Insets(5, 5, 5, 2);
 		labelLocation = new JLabel("Location: ");
 		labelLocation.setEnabled(false);
 		panelForm.add(labelLocation, c);
 		
 		c.gridx = 1;
-		fieldLocation = new JTextField("C:/Profram Files/Painter/projects", 20);
+		c.insets = new Insets(5, 0, 5, 10);
+		fieldLocation = new JTextField(defaultLocation, 20);
 		fieldLocation.setEnabled(false);
 		panelForm.add(fieldLocation, c);
 		
 		c.gridx = 2;
+		c.anchor = GridBagConstraints.CENTER;
+		c.insets = new Insets(5, 0, 5, 5);
 		btnBrowse = new JButton("Browse");
 		btnBrowse.setEnabled(false);
 		btnBrowse.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-				JFileChooser fileChooser = new JFileChooser();
-
-				// For Directory
-				fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-
-				// For File
-				//fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-
-				fileChooser.setAcceptAllFileFilterUsed(false);
-
-				int rVal = fileChooser.showOpenDialog(null);
-				if (rVal == JFileChooser.APPROVE_OPTION) 
+				JFileChooser chooser = new JFileChooser();
+			    chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+				int returnValue = chooser.showDialog(null, "Browse");
+				if (returnValue == JFileChooser.APPROVE_OPTION) 
 				{
-					fieldFileName.setText(fileChooser.getSelectedFile().toString());
+					fieldLocation.setText(chooser.getSelectedFile().toString());
 				}
 			}
 		});
@@ -125,6 +125,7 @@ public class CreateNewFileDialog extends JDialog
 		c.gridy ++;
 		
 		c.gridx = 1;
+		c.insets = new Insets(5, 0, 5, 10);
 		c.anchor = GridBagConstraints.LINE_END;
 		btnOk = new JButton("OK");
 		btnOk.addActionListener(new ActionListener() 
@@ -139,7 +140,9 @@ public class CreateNewFileDialog extends JDialog
 		panelForm.add(btnOk, c);
 		
 		c.gridx = 2;
-		JButton btnCancel = new JButton("Cancel");
+		c.insets = new Insets(5, 0, 5, 5);
+		c.anchor = GridBagConstraints.CENTER;
+		btnCancel = new JButton("Cancel");
 		btnCancel.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent e) 

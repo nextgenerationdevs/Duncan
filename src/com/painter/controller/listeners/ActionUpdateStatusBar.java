@@ -37,5 +37,10 @@ public class ActionUpdateStatusBar implements ActionListener
 		{
 			statusBar.setFile("path: " + data.names.get(data.selectedIndex) + ".json");
 		}
+		else if (str.equals("setToZeroStatusBar")) 
+		{
+			statusBar.setStatus("Coordinates");
+			statusBar.setFile("Path to file");
+		}
 	}
 }

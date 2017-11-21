@@ -14,18 +14,25 @@ import javax.swing.event.ChangeListener;
 import com.painter.model.Data;
 
 public class ThicknessDialog extends JDialog implements ActionListener
-{
+{	
+	Data data;
 	JSlider slider = new JSlider();
-	Data data = null;
-	private int width = 0;
+	
+	private final static int widthOfThicknessDialog = 300;
+	private final static int heightOfThicknessDialog = 100;
 	
 	public ThicknessDialog(Data data)
 	{
-		JButton button = new JButton("OK");
-		button.addActionListener(this);
-		add(button, BorderLayout.SOUTH);
-		
 		this.data = data;
+		
+		setTitle("Choosing default thickness...");
+		
+		setLocation( (Toolkit.getDefaultToolkit().getScreenSize().width - widthOfThicknessDialog) / 2, 
+				 	 (Toolkit.getDefaultToolkit().getScreenSize().height - heightOfThicknessDialog) / 2);
+		setSize(widthOfThicknessDialog, heightOfThicknessDialog);	
+		
+		slider.setMinimum(1);
+		slider.setMaximum(100);
 		
 		slider.addChangeListener(new ChangeListener() 
 		{	
@@ -33,23 +40,19 @@ public class ThicknessDialog extends JDialog implements ActionListener
 			public void stateChanged(ChangeEvent e) 
 			{
 				JSlider theSlider = (JSlider) e.getSource();
-				//data.setWidth(theSlider.getValue());	
+				data.setThickness(theSlider.getValue());	
 			}
 		});
 		
-		int width = 300;
-		int height = 100;
-		int x = Toolkit.getDefaultToolkit().getScreenSize().width / 2 - width / 2;
-		int y = Toolkit.getDefaultToolkit().getScreenSize().height / 2 - height / 2;
-		setLocation(x, y);
-		setSize(width, height);
-		setModal(true);
-		
-		slider.setMinimum(1);
-		slider.setMaximum(100);
 		add(slider, BorderLayout.NORTH);
 		
-		//pack();
+		JButton btnOk = new JButton("OK");
+		btnOk.addActionListener(this);
+		add(btnOk, BorderLayout.SOUTH);
+		
+		pack();
+		setModal(true);
+		setResizable(false);
 		setVisible(true);
 	}
 

@@ -17,6 +17,17 @@ public class Data
 	
 	public InterfaceFigure selectedFigure = PluginsList.getPlugins().get(0);
 	
+	//Default Properties
+	public Type type = Type.oval;
+	public int color = 0xFF9900;
+	public int thickness = 10;
+
+	//Selected Plugin
+	public int selectedIndex = 0;
+
+	//Tabs
+	public List<String> names = new ArrayList<String>();
+	
 	public int getStatusX()
 	{
 		return statusX;
@@ -32,16 +43,13 @@ public class Data
 	public void setStatusY(int statusY)
 	{
 		this.statusY = statusY;
+	}	
+	public int getThickness()
+	{
+		return thickness;
 	}
-	
-	// Default Properties
-	public Type type = Type.oval;
-	public int color = 0xFF9900;
-	public int thickness = 10;
-	
-	//	Selected Plugin
-	public int selectedIndex = 0;
-	
-//	Tabs
-	public List<String> names = new ArrayList<String>();
+	public void setThickness(int thickness)
+	{
+		this.thickness = thickness;
+	}
 }

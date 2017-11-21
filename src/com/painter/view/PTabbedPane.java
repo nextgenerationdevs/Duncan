@@ -1,10 +1,8 @@
 package com.painter.view;
 
-import java.awt.Button;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 
-import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
@@ -90,8 +88,6 @@ public class PTabbedPane extends JTabbedPane
 			}
 	}
 
-
-
 	public PPanel getCurrentPanel()
 	{
 		Component c = getSelectedComponent();
@@ -109,7 +105,9 @@ public class PTabbedPane extends JTabbedPane
 	public void closeTab()
 	{
 		if (getSelectedIndex() < 0)
+		{
 			return;
+		}
 		if (getSelectedIndex() < 2)
 		{
 			toolBar.buttonNextTab.setEnabled(false);
@@ -117,5 +115,9 @@ public class PTabbedPane extends JTabbedPane
 		}
 		cmd.getData().names.remove(getSelectedIndex());
 		removeTabAt(getSelectedIndex());
+		if (cmd.getData().names.size() == 0)
+		{
+			cmd.actionUpdateStatusBar.actionPerformed(new ActionEvent(this, 0, "setToZeroStatusBar"));
+		}
 	}	
 }

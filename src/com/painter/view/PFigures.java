@@ -3,6 +3,7 @@ package com.painter.view;
 import java.awt.Color;
 
 import javax.swing.BoxLayout;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
@@ -26,11 +27,14 @@ public class PFigures extends JPanel
 		for (InterfaceFigure figure : PluginsList.getPlugins())
 		{
 			figure.setMainProperties(cmd.getData().type, cmd.getData().color, cmd.getData().thickness);
-			JPanel panel = figure.getPluginFigure();
+			JPanel panel = figure.getPluginFigure();		
 			figure.setDragSource(panel);
 			scrollPane.getViewport().add(panel);
 		}
 		scrollPane.add(new JPanel());
+		
+		
+		
 		add(scrollPane);
 		
 		setVisible(true);
