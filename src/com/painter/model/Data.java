@@ -52,4 +52,12 @@ public class Data
 	{
 		this.thickness = thickness;
 	}
+	public int getColor()
+	{
+		return color;
+	}
+	public void setColor(int color)
+	{
+		this.color = color;
+	}
 }

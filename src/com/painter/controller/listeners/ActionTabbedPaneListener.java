@@ -87,11 +87,6 @@ public class ActionTabbedPaneListener implements ActionListener
 
 	private void closeTab()
 	{
-		String str = cmd.getData().names.get(tPane.getSelectedIndex());
-		if(str.compareTo("Untitled" + ""+nameCounter) == 0)
-		{
-			nameCounter--;
-		}
 		tPane.closeTab();
 		addWindow();
 	}
@@ -174,6 +169,7 @@ public class ActionTabbedPaneListener implements ActionListener
 				}
 				tPane.addNewTab(fileName); 
 			}
+			createNewFileDialog.status_WINDOW = 1;
 			addWindow();			
 		}			
 	}
