@@ -32,10 +32,10 @@ public class EditMenu extends JMenu
 			JMenuItem item = new JMenuItem(data.bundle.getString(arrayStr[i]));
 			switch (arrayStr[i]) 
 			{
-			case "actionUndo": item.setIcon(new ImageIcon("resources/img/menubar/arrow-undo-icon.png"));
+			case "actionUndo": item.setIcon(new ImageIcon("resources/img/menubar/undo-icon.png"));
 							   item.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Z, ActionEvent.CTRL_MASK));
 							   /*item.addActionListener(cmd.actionPlugins);*/ break;
-			case "actionRedo": item.setIcon(new ImageIcon("resources/img/menubar/arrow-redo-icon.png"));
+			case "actionRedo": item.setIcon(new ImageIcon("resources/img/menubar/redo-icon.png"));
 							   item.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Y, ActionEvent.CTRL_MASK));
 							   /*item.addActionListener(cmd.actionPlugins);*/ break;
 			case "actionType": item.setIcon(new ImageIcon("resources/img/menubar/typeOfFigure-icon.png"));

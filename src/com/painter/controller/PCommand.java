@@ -1,10 +1,7 @@
 package com.painter.controller;
 
-import java.awt.event.ActionListener;
-
 import com.painter.controller.listeners.ActionAbout;
 import com.painter.controller.listeners.ActionAddLanguage;
-import com.painter.controller.listeners.ActionCloseFile;
 import com.painter.controller.listeners.ActionColorChooser;
 import com.painter.controller.listeners.ActionDefaultSettings;
 import com.painter.controller.listeners.ActionExit;
@@ -18,12 +15,12 @@ import com.painter.controller.listeners.ActionSetLanguage;
 import com.painter.controller.listeners.ActionSkins;
 import com.painter.controller.listeners.ActionTabbedPaneListener;
 import com.painter.controller.listeners.ActionThickness;
+import com.painter.controller.listeners.ActionUndoRedo;
 import com.painter.controller.listeners.ActionUpdateStatusBar;
 import com.painter.controller.listeners.DropTargetListener;
 import com.painter.controller.listeners.PaintListener;
 import com.painter.model.Data;
 import com.painter.view.PFrame;
-import com.painter.view.PMenu;
 
 public class PCommand
 {
@@ -50,6 +47,8 @@ public class PCommand
 	public ActionSetLanguage		actionSetLanguage;
 	
 	public ActionUpdateStatusBar	actionUpdateStatusBar;
+
+	public ActionUndoRedo			actionUndoRedo;
 	
 	public PCommand(Data data, PFrame frame)
 	{
@@ -76,6 +75,8 @@ public class PCommand
 		actionSetLanguage		= new ActionSetLanguage(data, frame);
 		
 		actionUpdateStatusBar   = new ActionUpdateStatusBar(frame.statusBar, data);
+		
+		actionUndoRedo = new ActionUndoRedo(this, data);
 	}
 
 	public Data getData()

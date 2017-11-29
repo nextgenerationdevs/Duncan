@@ -13,12 +13,15 @@ public class PToolBar extends JToolBar
 	public JButton buttonPrevTab;
 	public JButton buttonNextTab;
 	
+	public JButton buttonUndo;
+	public JButton buttonRedo;
+	
 	public PToolBar(PCommand cmd)
 	{
 		this.cmd = cmd;
 		
 		String[] arrayStr = {"newFile", "openFile", "saveFile", "openFileFromCloud", "saveFileToCloud", "closeFile", "aboutApp", 
-							 "defaultSettings", "actionUndo", "actionRedo"/*, "prevTab", "nextTab"*/};
+							 "defaultSettings"/*, "actionUndo", "actionRedo", "prevTab", "nextTab"*/};
 		
 		String[] arrayAct = {"actionNew", "actionOpen", "actionSave", "actionOpenFromCloud", "actionSaveToCloud", "actionClose"};
 		
@@ -40,10 +43,10 @@ public class PToolBar extends JToolBar
 				case "aboutApp": button.addActionListener(cmd.actionAbout); break;
 				case "defaultSettings": button.addActionListener(cmd.actionDefaultSettings); break;
 				
-				case "actionUndo": button.setEnabled(false);
-					/*button.addActionListener(cmd.?);*/ break;
-				case "actionRedo": button.setEnabled(false);
-					/*button.addActionListener(cmd.?);*/ break;
+//				case "actionUndo": button.setEnabled(false);
+//					/*button.addActionListener(cmd.?);*/ break;
+//				case "actionRedo": button.setEnabled(false);
+//					/*button.addActionListener(cmd.?);*/ break;
 //				case "prevTab": button.setActionCommand("actionPrevTab");
 //					button.setEnabled(false);
 //					button.addActionListener(cmd.actionTabbedPane); break;
@@ -67,6 +70,19 @@ public class PToolBar extends JToolBar
 		buttonNextTab.setActionCommand("actionNextTab");
 		buttonNextTab.setEnabled(false);
 		buttonNextTab.addActionListener(cmd.actionTabbedPane); 
+		
+		buttonUndo = new JButton(new ImageIcon("resources/img/toolbar/" + "actionUndo" + "-icon.png"));
+		buttonPrevTab.setActionCommand("actionUndo");
+		buttonPrevTab.setEnabled(false);
+		buttonPrevTab.addActionListener(cmd.actionUndoRedo);
+		
+		buttonRedo = new JButton(new ImageIcon("resources/img/toolbar/" + "actionRedo" + "-icon.png"));
+		buttonPrevTab.setActionCommand("actionRedo");
+		buttonPrevTab.setEnabled(false);
+		buttonPrevTab.addActionListener(cmd.actionUndoRedo);
+		
+		add(buttonUndo);
+		add(buttonRedo);
 		
 		add(buttonPrevTab);
 		add(buttonNextTab);
