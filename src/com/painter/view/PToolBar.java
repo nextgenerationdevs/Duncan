@@ -74,12 +74,12 @@ public class PToolBar extends JToolBar
 		buttonUndo = new JButton(new ImageIcon("resources/img/toolbar/" + "actionUndo" + "-icon.png"));
 		buttonPrevTab.setActionCommand("actionUndo");
 		buttonPrevTab.setEnabled(false);
-		buttonPrevTab.addActionListener(cmd.actionUndoRedo);
+//		buttonPrevTab.addActionListener(cmd.actionUndoRedo);
 		
 		buttonRedo = new JButton(new ImageIcon("resources/img/toolbar/" + "actionRedo" + "-icon.png"));
 		buttonPrevTab.setActionCommand("actionRedo");
 		buttonPrevTab.setEnabled(false);
-		buttonPrevTab.addActionListener(cmd.actionUndoRedo);
+//		buttonPrevTab.addActionListener(cmd.actionUndoRedo);
 		
 		add(buttonUndo);
 		add(buttonRedo);
