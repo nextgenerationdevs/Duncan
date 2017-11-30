@@ -12,9 +12,19 @@ public class Dictionary_RU extends ListResourceBundle implements InterfaceBundle
 	private boolean status;
 	public static final String resourceBundle = "com.painter.model.lang.dictionaries.Dictionary_RU";
 	private static final String name = "Русский";
+	private static final String surname = "русский";
 	
 	private static final Object[][] contents = 
 	{
+	//Dialogs, Titles:
+	{"titleAddLanguageDialog", "ДОБАВИТЬ ЯЗЫК"}, 
+	//Dialogs, ControllButtons:
+	{"controllButtonOk", "ОК"}, {"controllButtonApply", "Применить"}, {"controllButtonCancel", "Отменить"},
+	{"controllButtonAdd", "Добавить"}, {"controllButtonRemove", "Удалить"},
+	//JOptionPane, Buttons:
+	{"actionOptionPaneCancel", "Отмена"}, {"actionOptionPaneOk", "ОК"}, {"actionOptionPaneNo", "Нет"}, {"actionOptionPaneYes", "Да"},
+	//PFrame, SetTitle:
+	{"actionFrameTitle", "Дункан"},
 	//MenuBar, Menu_File:
 	{"actionFile", "Файл"}, {"actionNew", "Новый"}, {"actionOpen", "Открыть"}, {"actionOpenFromCloud", "Открыть из облака"}, {"actionLoad", "Загрузить"},
 	{"actionSave", "Сохранить"}, {"actionSaveToCloud", "Сохранить в облако"}, {"actionReload", "Перезагрузить"}, {"actionClose", "Закрыть"}, {"actionExit", "Выход"},
@@ -26,7 +36,14 @@ public class Dictionary_RU extends ListResourceBundle implements InterfaceBundle
 	{"actionOptions", "Опции"}, {"actionPlugins", "Плагины"}, {"actionSkins", "Скины"}, {"actionCloud", "Облако"}, {"actionLanguage", "Язык"},
 	{"actionAddLanguage", "Добавить язык"},
 	//MenuBar, Menu_Help:		
-	{"actionHelp", "Помощь"}, {"actionHotKeys", "Горячие клавиши"}, {"actionAbout", "О программе"}
+	{"actionHelp", "Помощь"}, {"actionHotKeys", "Горячие клавиши"}, {"actionAbout", "О программе"},
+	//Warning messages		
+	{"warning_title", "Предупредительное Сообщение"},
+	{"nameOfTabbedPaneExist", "Вкладка с данным названием уже существует!\nПожалуйста создайте вкладку с другим именем!"},
+	{"areYouSureForSession", "Вы потеряете текущую сессию без возможности её сохранить!\nНажмите OK, если Вы уверены в этом!"},
+	//Repaint frame message		
+	{"confirm_title", "Предупредительное Сообщение"},
+	{"actionSessionClosed", "Текущая сессия будет закрыта!\nНажмите OK, если хотите сохранить сессию!"}
 	};
 
 	@Override
@@ -51,6 +68,12 @@ public class Dictionary_RU extends ListResourceBundle implements InterfaceBundle
 	public String getName() 
 	{
 		return name;
+	}
+	
+	@Override
+	public String getSurname() 
+	{
+		return surname;
 	}
 
 	@Override

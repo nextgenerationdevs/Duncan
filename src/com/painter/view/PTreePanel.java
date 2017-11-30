@@ -28,7 +28,7 @@ public class PTreePanel extends JPanel
 	PCommand cmd;
 	
 	private JTree tree;
-   // private JLabel selectedLabel;
+    //private JLabel selectedLabel;
 	
 	public PTreePanel(PCommand cmd)
 	{

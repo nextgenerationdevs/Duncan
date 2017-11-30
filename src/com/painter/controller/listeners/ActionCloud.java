@@ -4,13 +4,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import com.painter.model.Data;
-import com.painter.view.modal.ThicknessDialog;
+import com.painter.view.modal.CloudDialog;
+import com.painter.view.modal.PluginsDialog;
 
-public class ActionThickness implements ActionListener 
+public class ActionCloud implements ActionListener 
 {
 	Data data;
 	
-	public ActionThickness(Data data)
+	public ActionCloud(Data data)
 	{
 		this.data = data;
 	}
@@ -18,6 +19,6 @@ public class ActionThickness implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e) 
 	{
-		new ThicknessDialog(data);
+		new CloudDialog(data);
 	}
 }

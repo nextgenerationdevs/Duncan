@@ -17,16 +17,13 @@ public class Main
 			{
 				if ("Nimbus".equals(info.getName()))
 				{
-
 					UIManager.setLookAndFeel(info.getClassName());
-
 					break;
 				}
 			}
 
 		}
-		catch (ClassNotFoundException | InstantiationException | IllegalAccessException
-				| UnsupportedLookAndFeelException ex)
+		catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex)
 		{
 			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
 		}

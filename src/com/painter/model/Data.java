@@ -4,13 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import javax.swing.UIManager;
+
 import com.painter.model.lang.LanguageFactory;
 import com.painter.model.plugins.InterfaceFigure;
 import com.painter.model.plugins.PluginsList;
 
 public class Data
 {
-	public ResourceBundle bundle = LanguageFactory.activeLanguage();
+	public ResourceBundle bundle;
 	
 	public int statusX = 0;
 	public int statusY = 0;
@@ -27,6 +29,12 @@ public class Data
 
 	//Tabs
 	public List<String> names = new ArrayList<String>();
+	
+	public Data()
+	{
+		bundle = LanguageFactory.activeLanguage();
+		setButtonsOptionPane();
+	}
 	
 	public int getStatusX()
 	{
@@ -59,5 +67,13 @@ public class Data
 	public void setColor(int color)
 	{
 		this.color = color;
+	}
+	
+	private void setButtonsOptionPane()
+	{
+		UIManager.put("OptionPane.cancelButtonText", bundle.getString("actionOptionPaneCancel"));
+	    UIManager.put("OptionPane.noButtonText", bundle.getString("actionOptionPaneNo"));
+	    UIManager.put("OptionPane.okButtonText", bundle.getString("actionOptionPaneOk"));
+	    UIManager.put("OptionPane.yesButtonText", bundle.getString("actionOptionPaneYes"));
 	}
 }

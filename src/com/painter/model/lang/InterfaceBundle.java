@@ -8,4 +8,5 @@ public interface InterfaceBundle
 	public boolean getStatus();
 	public void setStatus(boolean status);
 	public String getName();
+	public String getSurname();
 }

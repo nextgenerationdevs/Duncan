@@ -21,6 +21,9 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class CreateNewFileDialog extends JDialog
 {
+	private final static int widthOfCreateNewFileDialog = 500;
+	private final static int heightOfCreateNewFileDialog = 400;
+	
 	private final static String defaultLocation = "C:/Profram Files/Painter/projects";
 	public static String fileName = "";
 	public static int status_WINDOW = 1;
@@ -41,12 +44,9 @@ public class CreateNewFileDialog extends JDialog
 	{
 		setTitle("CREATING NEW TAB...");
 		
-		int width = 500;
-		int height = 400;	
-		int x = (Toolkit.getDefaultToolkit().getScreenSize().width - width) / 2;
-		int y = (Toolkit.getDefaultToolkit().getScreenSize().height - height) / 2;
-		setLocation(x, y);
-		setSize(width, height);
+		setLocation( (Toolkit.getDefaultToolkit().getScreenSize().width - widthOfCreateNewFileDialog) / 2, 
+			 	 	 (Toolkit.getDefaultToolkit().getScreenSize().height - heightOfCreateNewFileDialog) / 2);
+		setSize(widthOfCreateNewFileDialog, heightOfCreateNewFileDialog);
 		
 		JPanel panelForm = new JPanel(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();

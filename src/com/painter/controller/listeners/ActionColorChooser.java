@@ -1,13 +1,15 @@
 package com.painter.controller.listeners;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import com.painter.model.Data;
-import com.painter.view.modal.AboutDialog;
-import com.painter.view.modal.ColorDialog;
+import javax.swing.JColorChooser;
+import javax.swing.JDialog;
 
-public class ActionColorChooser implements ActionListener 
+import com.painter.model.Data;
+
+public class ActionColorChooser extends JDialog implements ActionListener 
 {
 	Data data;
 	
@@ -19,6 +21,10 @@ public class ActionColorChooser implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e) 
 	{
-		new ColorDialog(data);
+		Color newColor = JColorChooser.showDialog(this, "Choosing default color...", new Color(data.getColor()));
+		if(newColor != null)
+		{
+			data.setColor(newColor.getRGB());
+		}
 	}
 }
