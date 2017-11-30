@@ -4,8 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import com.painter.model.Data;
-import com.painter.view.modal.AboutDialog;
-import com.painter.view.modal.ColorDialog;
 import com.painter.view.modal.ThicknessDialog;
 
 public class ActionThickness implements ActionListener 

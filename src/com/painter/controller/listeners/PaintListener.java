@@ -5,6 +5,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.net.URLClassLoader;
 
+import javax.swing.undo.UndoableEditSupport;
+
 import com.painter.controller.PCommand;
 import com.painter.controller.PPanel;
 import com.painter.model.Data;
@@ -100,6 +102,8 @@ public class PaintListener extends MouseAdapter
 	@Override
 	public void mouseReleased(MouseEvent e)
 	{
+//		UndoableEditSupport undoableEditSupport = new UndoableEditSupport(panel);
+//		undoableEditSupport.postEdit(new UndoableDrawEdit(panel));
 		int button = e.getButton();
 		switch(button)
 		{

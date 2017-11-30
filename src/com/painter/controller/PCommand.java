@@ -1,7 +1,11 @@
 package com.painter.controller;
 
+import java.awt.event.ActionListener;
+
 import com.painter.controller.listeners.ActionAbout;
 import com.painter.controller.listeners.ActionAddLanguage;
+import com.painter.controller.listeners.ActionCloseFile;
+import com.painter.controller.listeners.ActionCloud;
 import com.painter.controller.listeners.ActionColorChooser;
 import com.painter.controller.listeners.ActionDefaultSettings;
 import com.painter.controller.listeners.ActionExit;
@@ -21,6 +25,8 @@ import com.painter.controller.listeners.DropTargetListener;
 import com.painter.controller.listeners.PaintListener;
 import com.painter.model.Data;
 import com.painter.view.PFrame;
+import com.painter.view.PMenu;
+import com.painter.view.menus.OptionsMenu;
 
 public class PCommand
 {
@@ -37,6 +43,7 @@ public class PCommand
 	public ActionDefaultSettings	actionDefaultSettings;
 	public ActionPlugins			actionPlugins;
 	public ActionSkins			    actionSkins;
+	public ActionCloud			    actionCloud;
 	public ActionAbout				actionAbout;
 	public ActionHotKeys			actionHotKeys;
 	public ActionExit				actionExit;
@@ -65,13 +72,14 @@ public class PCommand
 		actionDefaultSettings	= new ActionDefaultSettings();
 		actionPlugins			= new ActionPlugins(data);
 		actionSkins				= new ActionSkins(data, frame);
+		actionCloud				= new ActionCloud(data);
 		actionAbout				= new ActionAbout();
 		actionHotKeys			= new ActionHotKeys();
 		actionExit				= new ActionExit();
 		mousePaint				= new PaintListener(this, data);
 		dropTargetListener		= new DropTargetListener(this);
 		
-		actionAddLanguage		= new ActionAddLanguage(data);
+		actionAddLanguage		= new ActionAddLanguage(data, frame);
 		actionSetLanguage		= new ActionSetLanguage(data, frame);
 		
 		actionUpdateStatusBar   = new ActionUpdateStatusBar(frame.statusBar, data);

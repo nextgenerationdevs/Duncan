@@ -7,6 +7,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import javax.swing.undo.UndoManager;
 
 import com.painter.controller.PCommand;
 import com.painter.controller.PPanel;
@@ -46,7 +47,11 @@ public class PTabbedPane extends JTabbedPane
 
 	public void addNewTab(String name)
 	{
+		UndoManager manager = new UndoManager();
 		PPanel pPanel = new PPanel(cmd);
+		
+//		pPanel..addUndoableEditListener(manager);
+		
 		JScrollPane scrollPane = new JScrollPane(pPanel, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		addTab(name, scrollPane);
 		cmd.getData().names.add(name);						//		!!!Õ¿œ–ﬂÃ”ﬁ !!! »«Ã≈Õ»“‹!!!

@@ -16,7 +16,7 @@ public class PMenu extends JMenuBar
 	private FileMenu 	fileMenu;
 	private EditMenu 	editMenu;
 	private WindowMenu 	windowMenu;
-	private OptionsMenu optionsMenu;
+	public OptionsMenu optionsMenu;
 	private HelpMenu 	helpMenu;
 
 	public PMenu(Data data, PCommand cmd)
