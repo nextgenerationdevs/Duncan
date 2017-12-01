@@ -72,13 +72,12 @@ public class PFrame extends JFrame
 		add(leftPanel, BorderLayout.WEST);
 		
 		PTreePanel treePanel = new PTreePanel(cmd);
-		//getRootPane().setWindowDecorationStyle(JRootPane.PLAIN_DIALOG);
 		leftPanel.add(treePanel);
 		
 		PSidePanel sidePanel = new PSidePanel(cmd);
 		leftPanel.add(sidePanel);
 		
-		setResizable(true);
+		setResizable(false);
 		setMinimumSize(new Dimension(1366, 768));
 		
 		setVisible(true);

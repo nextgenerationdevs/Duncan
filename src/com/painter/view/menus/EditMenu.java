@@ -30,7 +30,7 @@ public class EditMenu extends JMenu
 		for (int i = 0; i < arrayStr.length; i++) 
 		{
 			JMenuItem item = new JMenuItem(data.bundle.getString(arrayStr[i]));
-			switch (arrayStr[i]) 
+			switch (arrayStr[i])
 			{
 			case "actionUndo": item.setIcon(new ImageIcon("resources/img/menubar/undo-icon.png"));
 							   item.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Z, ActionEvent.CTRL_MASK));

@@ -6,6 +6,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EtchedBorder;
 
+@SuppressWarnings("serial")
 public class PStatusBar extends JPanel
 {
 	private static final JLabel statusCoord = new JLabel();
@@ -22,12 +23,12 @@ public class PStatusBar extends JPanel
 		
 	}
 
-	public static void setStatus(String coordinates) 
+	public void setStatus(String coordinates) 
 	{
 		statusCoord.setText(coordinates);	
 	}
 
-	public static void setFile(String file)
+	public void setFile(String file)
 	{
 		statusFile.setText(file);
 	}

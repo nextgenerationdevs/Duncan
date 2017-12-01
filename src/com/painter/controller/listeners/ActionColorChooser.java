@@ -9,7 +9,7 @@ import javax.swing.JDialog;
 
 import com.painter.model.Data;
 
-public class ActionColorChooser extends JDialog implements ActionListener 
+public class ActionColorChooser implements ActionListener 
 {
 	Data data;
 	
@@ -21,7 +21,7 @@ public class ActionColorChooser extends JDialog implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e) 
 	{
-		Color newColor = JColorChooser.showDialog(this, "Choosing default color...", new Color(data.getColor()));
+		Color newColor = JColorChooser.showDialog(null, "Choosing default color...", new Color(data.getColor()));
 		if(newColor != null)
 		{
 			data.setColor(newColor.getRGB());

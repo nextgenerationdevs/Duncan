@@ -3,25 +3,17 @@ package com.painter.controller.listeners;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JFileChooser;
-import javax.swing.filechooser.FileNameExtensionFilter;
-
-import com.painter.controller.EmptyDialog;
-import com.painter.controller.PCommand;
-import com.painter.controller.formats.ImportExportImpl;
-import com.painter.controller.formats.SaveOpenLoad_JSON;
 import com.painter.model.Data;
-import com.painter.view.PStatusBar;
-import com.painter.view.PTabbedPane;
+import com.painter.view.PFrame;
 
 public class ActionUpdateStatusBar implements ActionListener
 {
-	PStatusBar statusBar;
+	PFrame frame;
 	Data data;
 	
-	public ActionUpdateStatusBar(PStatusBar statusBar, Data data)
+	public ActionUpdateStatusBar(PFrame frame, Data data)
 	{
-		this.statusBar = statusBar;
+		this.frame = frame;
 		this.data = data;
 	}
 	
@@ -31,16 +23,16 @@ public class ActionUpdateStatusBar implements ActionListener
 		String str = e.getActionCommand();
 		if (str.equals("updateXY")) 
 		{
-			statusBar.setStatus("X: " + data.getStatusX() + " " + "Y: " + data.getStatusY());
+			frame.statusBar.setStatus("X: " + data.getStatusX() + " " + "Y: " + data.getStatusY());
 		}
 		else if (str.equals("updateFile")) 
 		{
-			statusBar.setFile("path: " + data.names.get(data.selectedIndex) + ".json");
+			frame.statusBar.setFile("path: " + data.names.get(data.selectedIndex) + ".json");
 		}
 		else if (str.equals("setToZeroStatusBar")) 
 		{
-			statusBar.setStatus("Coordinates");
-			statusBar.setFile("Path to file");
+			frame.statusBar.setStatus("Coordinates");
+			frame.statusBar.setFile("Path to file");
 		}
 	}
 }

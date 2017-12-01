@@ -1,7 +1,6 @@
 package com.painter.view.modal;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -10,30 +9,20 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Locale;
-import java.util.ResourceBundle;
 
-import javax.swing.DefaultListSelectionModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.ListCellRenderer;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 
 import com.painter.model.Data;
 import com.painter.model.lang.InterfaceBundle;
 import com.painter.model.lang.LanguageFactory;
-import com.painter.model.lang.dictionaries.Dictionary_EN;
 import com.painter.model.lang.dictionaries.Dictionary_RU;
 import com.painter.model.lang.dictionaries.Dictionary_UKR;
 import com.painter.view.PFrame;
-import com.painter.view.modal.CloudDialog.FieldChangeListener;
-import com.painter.view.modal.CloudDialog.SaveChangesOfModalWindow;
 
 public class AddLanguageDialog extends JDialog
 {
@@ -215,17 +204,15 @@ public class AddLanguageDialog extends JDialog
 					{				
 						if(bundle.getSurname().toLowerCase().equals(language))
 						{
-							System.out.println("зашёл в отработку");
 							checkCommand = e.getActionCommand();
 							languageBox.setEnabled(false);
 							btnAdd.setEnabled(false);
 							btnApply.setEnabled(true);
 						}
-					}			
+					}
 				}
 				else
 				{
-					System.out.println("зашёл в сорян");
 					JOptionPane.showMessageDialog(null, "Сорян такой язык удалить невозможно!", "Вот так вот...", JOptionPane.ERROR_MESSAGE); 
 					return;
 				}

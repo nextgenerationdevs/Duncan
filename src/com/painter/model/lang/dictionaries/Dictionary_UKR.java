@@ -1,7 +1,6 @@
 package com.painter.model.lang.dictionaries;
 
 import java.util.ListResourceBundle;
-import java.util.Locale;
 import java.util.ResourceBundle;
 
 import com.painter.model.lang.InterfaceBundle;

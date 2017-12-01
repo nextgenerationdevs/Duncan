@@ -4,7 +4,6 @@ import java.awt.event.ActionListener;
 
 import com.painter.controller.listeners.ActionAbout;
 import com.painter.controller.listeners.ActionAddLanguage;
-import com.painter.controller.listeners.ActionCloseFile;
 import com.painter.controller.listeners.ActionCloud;
 import com.painter.controller.listeners.ActionColorChooser;
 import com.painter.controller.listeners.ActionDefaultSettings;
@@ -25,12 +24,11 @@ import com.painter.controller.listeners.DropTargetListener;
 import com.painter.controller.listeners.PaintListener;
 import com.painter.model.Data;
 import com.painter.view.PFrame;
-import com.painter.view.PMenu;
-import com.painter.view.menus.OptionsMenu;
 
 public class PCommand
 {
 	Data data;
+	PFrame frame;
 	
 	public ActionSaveFile			actionSaveFile;
 	public ActionOpenFileFromCloud	actionOpenFileFromCloud;
@@ -60,6 +58,7 @@ public class PCommand
 	public PCommand(Data data, PFrame frame)
 	{
 		this.data = data;
+		this.frame = frame;
 		
 		actionSaveFile			= new ActionSaveFile();
 		actionOpenFileFromCloud	= new ActionOpenFileFromCloud();
@@ -69,7 +68,7 @@ public class PCommand
 		
 		actionColorChooser		= new ActionColorChooser(data);
 		actionThickness			= new ActionThickness(data);
-		actionDefaultSettings	= new ActionDefaultSettings();
+		actionDefaultSettings	= new ActionDefaultSettings(data);
 		actionPlugins			= new ActionPlugins(data);
 		actionSkins				= new ActionSkins(data, frame);
 		actionCloud				= new ActionCloud(data);
@@ -82,7 +81,7 @@ public class PCommand
 		actionAddLanguage		= new ActionAddLanguage(data, frame);
 		actionSetLanguage		= new ActionSetLanguage(data, frame);
 		
-		actionUpdateStatusBar   = new ActionUpdateStatusBar(frame.statusBar, data);
+		actionUpdateStatusBar   = new ActionUpdateStatusBar(frame, data);
 		
 		actionUndoRedo 			= new ActionUndoRedo(this, data);
 	}
