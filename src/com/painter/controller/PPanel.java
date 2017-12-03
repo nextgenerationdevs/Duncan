@@ -33,8 +33,6 @@ public class PPanel extends JPanel
 		resFigure.revalidate();
 		resFigure.requestFocus();
 		resFigure.repaint();
-		
-		
 	}
 
 	public void update()
