@@ -78,20 +78,18 @@ public class DefaultPlugin implements InterfaceFigure
 	}
 
 	@Override
-	public void resize(int startX, int startY, int endX, int endY) 
-	{
-		int leftCornerX = (startX < endX) ? startX : endX;
-		int leftCornerY = (startY < endY) ? startY : endY;
-		int rightCornerX = (startX > endX) ? startX : endX;
-		int rightCornerY = (startY > endY) ? startY : endY;
+	public void resize(int startX, int startY, int width, int height) 
+	{		
+		x = startX;
+		y = startY;
+		this.width = width;
+		this.height = height;
 		
-		x = leftCornerX;
-		y = leftCornerY;
-		width = rightCornerX - leftCornerX;
-		height = rightCornerY - leftCornerY;
+		thisFigure.width = width;
+		thisFigure.height = height;
 		
-		thisFigure.setLocation(x, y);
-		thisFigure.setSize(width, height);
+		thisFigure.revalidate();
+		thisFigure.repaint();
 	}
 
 	@Override
