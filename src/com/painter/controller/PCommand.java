@@ -83,7 +83,7 @@ public class PCommand
 		
 		actionUpdateStatusBar   = new ActionUpdateStatusBar(frame, data);
 		
-		actionUndoRedo 			= new ActionUndoRedo(this, data);
+		actionUndoRedo 			= new ActionUndoRedo(null, null);
 	}
 
 	public Data getData()

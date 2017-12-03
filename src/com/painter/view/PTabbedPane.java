@@ -124,5 +124,5 @@ public class PTabbedPane extends JTabbedPane
 		{
 			cmd.actionUpdateStatusBar.actionPerformed(new ActionEvent(this, 0, "setToZeroStatusBar"));
 		}
-	}	
+	}
 }
