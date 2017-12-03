@@ -63,7 +63,9 @@ public class PaintListener extends MouseAdapter
 		{
 			case MouseEvent.BUTTON1:
 				startX = e.getX();
-				startY = e.getY();	
+				startY = e.getY();
+				panel.requestFocus();
+				panel.update();
 				break;
 			case MouseEvent.BUTTON2:
 				break;

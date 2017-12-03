@@ -34,10 +34,10 @@ public class FigurePanel extends JPanel
 	}
 	
 	@Override
-	protected void paintComponent(Graphics g)
+	public void paint(Graphics g)
 	{
 		drawShape(g);
-		super.paintComponent(g);
+		super.paint(g);
 	}
 	
 	public void drawShape(Graphics g)
