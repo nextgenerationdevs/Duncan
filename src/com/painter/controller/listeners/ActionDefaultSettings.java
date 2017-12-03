@@ -1,20 +1,3 @@
-<<<<<<< HEAD
-package com.painter.controller.listeners;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import com.painter.controller.EmptyDialog;
-
-public class ActionDefaultSettings implements ActionListener 
-{
-	@Override
-	public void actionPerformed(ActionEvent e) 
-	{
-		new EmptyDialog(getClass().toString());
-	}
-}
-=======
 package com.painter.controller.listeners;
 
 import java.awt.event.ActionEvent;
@@ -38,4 +21,3 @@ public class ActionDefaultSettings implements ActionListener
 		new DefaultSettingsDialog(data);
 	}
 }
->>>>>>> branch 'master' of https://github.com/nextgenerationdevs/Duncan.git

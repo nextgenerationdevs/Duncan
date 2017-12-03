@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-package com.painter.view.modal;
-
-import javax.swing.JDialog;
-
-public class CloudDialog extends JDialog
-{
-
-}
-=======
 package com.painter.view.modal;
 
 import java.awt.BorderLayout;
@@ -236,4 +226,3 @@ public class CloudDialog extends JDialog
 		}
 	}
 }
->>>>>>> branch 'master' of https://github.com/nextgenerationdevs/Duncan.git
