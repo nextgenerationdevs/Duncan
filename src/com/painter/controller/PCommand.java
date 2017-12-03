@@ -20,7 +20,7 @@ import com.painter.controller.listeners.ActionTabbedPaneListener;
 import com.painter.controller.listeners.ActionThickness;
 import com.painter.controller.listeners.ActionUndoRedo;
 import com.painter.controller.listeners.ActionUpdateStatusBar;
-import com.painter.controller.listeners.DropTargetListener;
+//import com.painter.controller.listeners.DropTargetListener;
 import com.painter.controller.listeners.PaintListener;
 import com.painter.model.Data;
 import com.painter.view.PFrame;
@@ -46,7 +46,7 @@ public class PCommand
 	public ActionHotKeys			actionHotKeys;
 	public ActionExit				actionExit;
 	public PaintListener			mousePaint;
-	public DropTargetListener		dropTargetListener;
+//	public DropTargetListener		dropTargetListener;
 	
 	public ActionAddLanguage 		actionAddLanguage;
 	public ActionSetLanguage		actionSetLanguage;
@@ -76,7 +76,7 @@ public class PCommand
 		actionHotKeys			= new ActionHotKeys();
 		actionExit				= new ActionExit();
 		mousePaint				= new PaintListener(this, data);
-		dropTargetListener		= new DropTargetListener(this);
+//		dropTargetListener		= new DropTargetListener(this);
 		
 		actionAddLanguage		= new ActionAddLanguage(data, frame);
 		actionSetLanguage		= new ActionSetLanguage(data, frame);
