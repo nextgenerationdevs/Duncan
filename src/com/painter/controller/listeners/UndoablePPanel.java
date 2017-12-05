@@ -1,42 +1,46 @@
 package com.painter.controller.listeners;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.undo.AbstractUndoableEdit;
 import javax.swing.undo.CannotRedoException;
 import javax.swing.undo.CannotUndoException;
+import javax.swing.undo.UndoableEdit;
 
 import com.painter.controller.PPanel;
+import com.painter.model.Resizable;
 import com.painter.model.plugins.InterfaceFigure;
 
-class UndoableDrawEdit extends AbstractUndoableEdit {
-	
+public class UndoablePPanel extends AbstractUndoableEdit
+{
 	PPanel pPanel;
+	List<Resizable> figures, savedFigures;
 
-	List<InterfaceFigure> figures, savedFigures;
-
-	public UndoableDrawEdit(PPanel pPanel) {
+	public UndoablePPanel(PPanel pPanel)
+	{
 		this.pPanel = pPanel;
-		figures = pPanel.getFigures();
+		figures = new ArrayList<Resizable>(pPanel.getFigures());
 	}
 
-	public String getPresentationName() {
-		return "Figures";
-	}
-
-	public void redo() throws CannotRedoException {
+	public void redo() throws CannotRedoException
+	{
 		super.redo();
-		if (savedFigures == null) {
+		if (savedFigures == null)
+		{
 			throw new CannotRedoException();
-		} else {
+		}
+		else
+		{
 			pPanel.setFigures(savedFigures);
 			savedFigures = null;
 		}
 	}
 
-	public void undo() throws CannotUndoException {
+	public void undo() throws CannotUndoException
+	{
 		super.undo();
-		savedFigures = pPanel.getFigures();
+		savedFigures = new ArrayList<Resizable>(pPanel.getFigures());
 		pPanel.setFigures(figures);
 	}
 }

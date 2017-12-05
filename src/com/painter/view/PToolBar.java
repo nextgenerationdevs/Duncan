@@ -42,17 +42,6 @@ public class PToolBar extends JToolBar
 				case "closeFile": button.addActionListener(/*cmd.actionCloseFile*/cmd.actionTabbedPane); break;
 				case "aboutApp": button.addActionListener(cmd.actionAbout); break;
 				case "defaultSettings": button.addActionListener(cmd.actionDefaultSettings); break;
-				
-//				case "actionUndo": button.setEnabled(false);
-//					/*button.addActionListener(cmd.?);*/ break;
-//				case "actionRedo": button.setEnabled(false);
-//					/*button.addActionListener(cmd.?);*/ break;
-//				case "prevTab": button.setActionCommand("actionPrevTab");
-//					button.setEnabled(false);
-//					button.addActionListener(cmd.actionTabbedPane); break;
-//				case "nextTab": button.setActionCommand("actionNextTab");
-//					button.setEnabled(false);
-//					button.addActionListener(cmd.actionTabbedPane); break;
 			}
 			add(button);
 			if (i == 0 || i == 2 || i == 4 || i == 6 || i == 7 || i == 9 /*|| i == 11*/) 
@@ -73,12 +62,12 @@ public class PToolBar extends JToolBar
 		
 		buttonUndo = new JButton(new ImageIcon("resources/img/toolbar/" + "actionUndo" + "-icon.png"));
 		buttonUndo.setActionCommand("actionUndo");
-//		buttonUndo.setEnabled(false);
+		buttonUndo.setEnabled(false);
 		buttonUndo.addActionListener(cmd.actionUndoRedo);
 		
 		buttonRedo = new JButton(new ImageIcon("resources/img/toolbar/" + "actionRedo" + "-icon.png"));
 		buttonRedo.setActionCommand("actionRedo");
-//		buttonRedo.setEnabled(false);
+		buttonRedo.setEnabled(false);
 		buttonRedo.addActionListener(cmd.actionUndoRedo);
 		
 		add(buttonUndo);

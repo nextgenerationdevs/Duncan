@@ -7,7 +7,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-import javax.swing.undo.UndoManager;
 
 import com.painter.controller.PCommand;
 import com.painter.controller.PPanel;
@@ -24,6 +23,7 @@ public class PTabbedPane extends JTabbedPane
 		this.frame = frame;
 		this.toolBar = toolBar;
 		cmd.actionTabbedPane.setTPane(this);
+		cmd.actionUndoRedo.setToolBar(toolBar);
 
 		addChangeListener(new ChangeListener()
 		{
@@ -39,6 +39,8 @@ public class PTabbedPane extends JTabbedPane
 					{
 						cmd.getData().selectedIndex = getSelectedIndex();
 						cmd.actionUpdateStatusBar.actionPerformed(new ActionEvent(this, 0, "updateFile"));
+						toolBar.buttonUndo.setEnabled(getCurrentPanel().isCanUndo());
+						toolBar.buttonRedo.setEnabled(getCurrentPanel().isCanRedo());
 					}
 				}
 			}
@@ -47,10 +49,9 @@ public class PTabbedPane extends JTabbedPane
 
 	public void addNewTab(String name)
 	{
-		UndoManager manager = new UndoManager();
 		PPanel pPanel = new PPanel(cmd);
 		
-//		pPanel..addUndoableEditListener(manager);
+		pPanel.addUndoableEditListener();
 		
 		JScrollPane scrollPane = new JScrollPane(pPanel, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		addTab(name, scrollPane);
@@ -61,6 +62,8 @@ public class PTabbedPane extends JTabbedPane
 		{
 			toolBar.buttonNextTab.setEnabled(true);
 			toolBar.buttonPrevTab.setEnabled(true);
+			toolBar.buttonUndo.setEnabled(false);
+			toolBar.buttonRedo.setEnabled(false);
 		}
 		cmd.actionUpdateStatusBar.actionPerformed(new ActionEvent(this, 0, "updateFile"));
 	}
@@ -72,6 +75,9 @@ public class PTabbedPane extends JTabbedPane
 		if (index >= cmd.getData().names.size() - 1)
 			return;
 		setSelectedIndex(++index);
+		
+		toolBar.buttonUndo.setEnabled(getCurrentPanel().isCanUndo());
+		toolBar.buttonRedo.setEnabled(getCurrentPanel().isCanRedo());
 	}
 
 	public void prevTab()
@@ -81,6 +87,9 @@ public class PTabbedPane extends JTabbedPane
 		if (index <= 0)
 			return;
 		setSelectedIndex(--index);
+		
+		toolBar.buttonUndo.setEnabled(getCurrentPanel().isCanUndo());
+		toolBar.buttonRedo.setEnabled(getCurrentPanel().isCanRedo());
 	}
 
 	public void selectTab(String name)
