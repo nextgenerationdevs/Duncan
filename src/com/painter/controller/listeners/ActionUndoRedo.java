@@ -23,8 +23,6 @@ public class ActionUndoRedo implements ActionListener
 	Data data;
 
 	UndoManager undoManager = new UndoManager();
-//	boolean canUndo = false;
-//	boolean canRedo = false;
 
 	public ActionUndoRedo(PCommand cmd, Data data)
 	{
@@ -80,7 +78,6 @@ public class ActionUndoRedo implements ActionListener
 		undoManager.undo();
 		setCanUndo(undoManager.canUndo());
 		setCanRedo(undoManager.canRedo());
-		toolBar.buttonUndo.setEnabled(panel.isCanUndo());
 	}
 
 	private void redo()
@@ -88,7 +85,6 @@ public class ActionUndoRedo implements ActionListener
 		undoManager.redo();
 		setCanUndo(undoManager.canUndo());
 		setCanRedo(undoManager.canRedo());
-		toolBar.buttonRedo.setEnabled(panel.isCanRedo());
 	}
 
 	public Resizable getRes()

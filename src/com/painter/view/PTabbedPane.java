@@ -62,8 +62,6 @@ public class PTabbedPane extends JTabbedPane
 		{
 			toolBar.buttonNextTab.setEnabled(true);
 			toolBar.buttonPrevTab.setEnabled(true);
-			toolBar.buttonUndo.setEnabled(false);
-			toolBar.buttonRedo.setEnabled(false);
 		}
 		cmd.actionUpdateStatusBar.actionPerformed(new ActionEvent(this, 0, "updateFile"));
 	}
