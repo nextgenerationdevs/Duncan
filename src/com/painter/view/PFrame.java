@@ -64,7 +64,7 @@ public class PFrame extends JFrame
 		sidePanel = new PSidePanel(cmd);
 		add(sidePanel);
 
-		tpane = new PTabbedPane(cmd, this, toolBar);
+		tpane = new PTabbedPane(cmd, this);
 		add(tpane, BorderLayout.CENTER);
 
 		JPanel leftPanel = new JPanel();	

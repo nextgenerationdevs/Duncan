@@ -17,13 +17,12 @@ public class PTabbedPane extends JTabbedPane
 	public PFrame frame;
 	public PToolBar toolBar;
 
-	public PTabbedPane(PCommand cmd, PFrame frame, PToolBar toolBar) 
+	public PTabbedPane(PCommand cmd, PFrame frame) 
 	{
 		this.cmd = cmd;
 		this.frame = frame;
-		this.toolBar = toolBar;
 		cmd.actionTabbedPane.setTPane(this);
-		cmd.actionUndoRedo.setToolBar(toolBar);
+		cmd.actionUndoRedo.setFrame(frame);
 
 		addChangeListener(new ChangeListener()
 		{
@@ -39,8 +38,10 @@ public class PTabbedPane extends JTabbedPane
 					{
 						cmd.getData().selectedIndex = getSelectedIndex();
 						cmd.actionUpdateStatusBar.actionPerformed(new ActionEvent(this, 0, "updateFile"));
-						toolBar.buttonUndo.setEnabled(getCurrentPanel().isCanUndo());
-						toolBar.buttonRedo.setEnabled(getCurrentPanel().isCanRedo());
+						frame.toolBar.buttonUndo.setEnabled(getCurrentPanel().isCanUndo());
+						frame.toolBar.buttonRedo.setEnabled(getCurrentPanel().isCanRedo());
+						frame.menuBar.editMenu.actionUndo.setEnabled(getCurrentPanel().isCanUndo());
+						frame.menuBar.editMenu.actionRedo.setEnabled(getCurrentPanel().isCanRedo());
 					}
 				}
 			}
@@ -60,8 +61,8 @@ public class PTabbedPane extends JTabbedPane
 		setSelectedIndex(cmd.getData().selectedIndex);
 		if (cmd.getData().names.size() > 1)
 		{
-			toolBar.buttonNextTab.setEnabled(true);
-			toolBar.buttonPrevTab.setEnabled(true);
+			frame.toolBar.buttonNextTab.setEnabled(true);
+			frame.toolBar.buttonPrevTab.setEnabled(true);
 		}
 		cmd.actionUpdateStatusBar.actionPerformed(new ActionEvent(this, 0, "updateFile"));
 	}
@@ -74,8 +75,10 @@ public class PTabbedPane extends JTabbedPane
 			return;
 		setSelectedIndex(++index);
 		
-		toolBar.buttonUndo.setEnabled(getCurrentPanel().isCanUndo());
-		toolBar.buttonRedo.setEnabled(getCurrentPanel().isCanRedo());
+		frame.toolBar.buttonUndo.setEnabled(getCurrentPanel().isCanUndo());
+		frame.toolBar.buttonRedo.setEnabled(getCurrentPanel().isCanRedo());
+		frame.menuBar.editMenu.actionUndo.setEnabled(getCurrentPanel().isCanUndo());
+		frame.menuBar.editMenu.actionRedo.setEnabled(getCurrentPanel().isCanRedo());
 	}
 
 	public void prevTab()
@@ -86,8 +89,10 @@ public class PTabbedPane extends JTabbedPane
 			return;
 		setSelectedIndex(--index);
 		
-		toolBar.buttonUndo.setEnabled(getCurrentPanel().isCanUndo());
-		toolBar.buttonRedo.setEnabled(getCurrentPanel().isCanRedo());
+		frame.toolBar.buttonUndo.setEnabled(getCurrentPanel().isCanUndo());
+		frame.toolBar.buttonRedo.setEnabled(getCurrentPanel().isCanRedo());
+		frame.menuBar.editMenu.actionUndo.setEnabled(getCurrentPanel().isCanUndo());
+		frame.menuBar.editMenu.actionRedo.setEnabled(getCurrentPanel().isCanRedo());
 	}
 
 	public void selectTab(String name)
@@ -122,8 +127,8 @@ public class PTabbedPane extends JTabbedPane
 		}
 		if (getSelectedIndex() < 2)
 		{
-			toolBar.buttonNextTab.setEnabled(false);
-			toolBar.buttonPrevTab.setEnabled(false);
+			frame.toolBar.buttonNextTab.setEnabled(false);
+			frame.toolBar.buttonPrevTab.setEnabled(false);
 		}
 		cmd.getData().names.remove(getSelectedIndex());
 		removeTabAt(getSelectedIndex());

@@ -33,6 +33,11 @@ public class ActionTabbedPaneListener implements ActionListener
 		this.tPane = tPane;
 	}
 	
+	public PTabbedPane getTPane()
+	{
+		return tPane;
+	}
+
 	@Override
 	public void actionPerformed(ActionEvent ae)
 	{

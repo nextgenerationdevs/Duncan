@@ -11,18 +11,21 @@ import com.painter.controller.PCommand;
 import com.painter.controller.PPanel;
 import com.painter.model.Data;
 import com.painter.model.Resizable;
+import com.painter.view.PFrame;
 import com.painter.view.PTabbedPane;
 import com.painter.view.PToolBar;
 
 public class ActionUndoRedo implements ActionListener
 {
-	private PToolBar toolBar;
+	private PFrame frame;
 	private PPanel panel;
 	private Resizable res;
 	PCommand cmd;
 	Data data;
 
 	UndoManager undoManager = new UndoManager();
+	private boolean canUndo = false;
+	private boolean canRedo = false;
 
 	public ActionUndoRedo(PCommand cmd, Data data)
 	{
@@ -41,21 +44,35 @@ public class ActionUndoRedo implements ActionListener
 		this.undoManager = undoManager;
 	}
 
-	public void setToolBar(PToolBar toolBar)
+	public void setFrame(PFrame frame)
 	{
-		this.toolBar = toolBar;
+		this.frame = frame;
+	}
+	
+	public boolean isCanUndo()
+	{
+		return canUndo;
+	}
+
+	public boolean isCanRedo()
+	{
+		return canRedo;
 	}
 
 	public void setCanUndo(boolean canUndo)
 	{
+		this.canUndo = canUndo;
 		panel.setCanUndo(canUndo);
-		toolBar.buttonUndo.setEnabled(panel.isCanUndo());
+		frame.toolBar.buttonUndo.setEnabled(panel.isCanUndo());
+		frame.menuBar.editMenu.actionUndo.setEnabled(panel.isCanUndo());
 	}
 
 	public void setCanRedo(boolean canRedo)
 	{
+		this.canRedo = canRedo;
 		panel.setCanRedo(canRedo);
-		toolBar.buttonRedo.setEnabled(panel.isCanRedo());
+		frame.toolBar.buttonRedo.setEnabled(panel.isCanRedo());
+		frame.menuBar.editMenu.actionRedo.setEnabled(panel.isCanRedo());
 	}
 
 	@Override

@@ -14,7 +14,7 @@ import com.painter.view.menus.WindowMenu;
 public class PMenu extends JMenuBar
 {
 	private FileMenu 	fileMenu;
-	private EditMenu 	editMenu;
+	public EditMenu 	editMenu;
 	private WindowMenu 	windowMenu;
 	public OptionsMenu optionsMenu;
 	private HelpMenu 	helpMenu;
